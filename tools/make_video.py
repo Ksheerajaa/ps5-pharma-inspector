@@ -89,34 +89,65 @@ def main():
         segments = [tuple(s) for s in json.loads(Path(a.segments).read_text(encoding="utf-8"))]
     else:
         segments = [(offset + s, offset + e, h, l) for s, e, h, l in CAPTIONS]
-    ok, frame = cap.read()
-    nxt_ok, nxt = cap.read()
-    nxt_t = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
+    # Optional per segment: [5] source video (default --input), [6] badge text, [7] second phone
+    # {"src", "from", "to", "label"} shown side by side (left label in [8]).
+    class Reader:
+        def __init__(self, src, start, end):
+            self.cap = cv2.VideoCapture(src); self.start, self.end = start, end
+            self.ok, self.frame = self.cap.read(); self.nok, self.nxt = self.cap.read()
+            self.nt = self.cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
+
+        def at(self, k):
+            t = min(self.start + k / fps, self.end)
+            while self.nok and self.nt <= t:
+                self.frame = self.nxt; self.nok, self.nxt = self.cap.read(); self.nt = self.cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
+            return self.frame
+
+    def phone(canvas, frame, x0, ph, label=None):
+        pw = int(frame.shape[1] * ph / frame.shape[0])
+        y0 = (H - ph) // 2 + (18 if label else 0)
+        cv2.rectangle(canvas, (x0 - 12, y0 - 12), (x0 + pw + 12, y0 + ph + 12), INK, -1)
+        canvas[y0:y0 + ph, x0:x0 + pw] = cv2.resize(frame, (pw, ph), interpolation=cv2.INTER_AREA)
+        if label:
+            text(canvas, label, (x0 - 8, y0 - 24), 0.6, INK, 2)
+        return pw
+
+    ok = True
     for seg in segments:
-      t = seg[0]
+      src = seg[5] if len(seg) > 5 and seg[5] else a.input
+      main_r = Reader(src, seg[0], seg[1])
+      second = seg[7] if len(seg) > 7 and seg[7] else None
+      side_r = Reader(second["src"], second["from"], second["to"]) if second else None
+      ok = main_r.ok
       shown = seg[4] if len(seg) > 4 else seg[1] - seg[0]
       for k in range(int(round(shown * fps))):
         if not ok:
             break
-        t = min(seg[0] + k / fps, seg[1])  # hold the last frame of the segment once it runs out
-        while nxt_ok and nxt_t <= t:  # latest recorded frame at or before t
-            frame = nxt
-            nxt_ok, nxt = cap.read()
-            nxt_t = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000
+        frame = main_r.at(k)
         cap_now = seg
         canvas = np.full((H, W, 3), BG, np.uint8)
-        ph = H - 80
-        pw = int(frame.shape[1] * ph / frame.shape[0])
-        phone = cv2.resize(frame, (pw, ph), interpolation=cv2.INTER_AREA)
-        x0 = 1180
-        cv2.rectangle(canvas, (x0 - 14, 26), (x0 + pw + 14, 26 + ph + 28), INK, -1)
-        canvas[40:40 + ph, x0:x0 + pw] = phone
+        if side_r:
+            ph = H - 200
+            pw = phone(canvas, frame, 1010, ph, seg[8] if len(seg) > 8 else "MVTec test images (replay)")
+            phone(canvas, side_r.at(k), 1010 + pw + 50, ph, second.get("label", "Live camera"))
+        else:
+            phone(canvas, frame, 1180, H - 80)
         if cap_now:
             cv2.circle(canvas, (130, 380), 11, ORANGE, -1)
-            for i, line in enumerate(wrap(cap_now[2], 24)):
+            for i, line in enumerate(wrap(cap_now[2], 22 if len(cap_now) > 7 and cap_now[7] else 24)):
                 text(canvas, line, (160, 400 + i * 80), 2.0, INK, 3)
-            for i, line in enumerate(wrap(cap_now[3], 44)):
+            for i, line in enumerate(wrap(cap_now[3], 38 if len(cap_now) > 7 and cap_now[7] else 44)):
                 text(canvas, line, (160, 560 + i * 52), 1.05, GREY, 2)
+        held = seg[0] + k / fps > seg[1] and (not side_r or second["from"] + k / fps > second["to"])
+        if held:
+            cv2.rectangle(canvas, (130, 120), (560, 168), (210, 210, 210), -1)
+            text(canvas, "||  PAUSED FOR NARRATION", (150, 154), 0.8, INK, 2)
+        else:
+            badge = seg[6] if len(seg) > 6 and seg[6] else "LIVE SCREEN RECORDING ON THE PHONE  |  REAL TIME"
+            bw = cv2.getTextSize(badge, cv2.FONT_HERSHEY_DUPLEX, 0.8, 2)[0][0]
+            cv2.rectangle(canvas, (130, 120), (175 + bw + 20, 168), INK, -1)
+            cv2.circle(canvas, (155, 144), 9, ORANGE, -1)
+            text(canvas, badge, (175, 154), 0.8, (255, 255, 255), 2)
         text(canvas, "PHARMA INSPECTOR  |  OFFLINE  |  ON-DEVICE", (160, 980), 0.8, GREY, 1)
         out.write(canvas)
     for img in [card("AI quality control in your pocket.", "Pharma Inspector · github.com/Ksheerajaa/ps5-pharma-inspector")] * int(a.end_secs * fps):
