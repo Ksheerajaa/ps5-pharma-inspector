@@ -33,6 +33,16 @@ cloud, no GPU and no network permission are used.
 <figure><img src="figures/ui_history.png"><figcaption>Inspection log</figcaption></figure>
 </div>
 
+*Top: replay of MVTec test images. Bottom: the live phone camera on real paracetamol tablets.*
+
+<div class="figs">
+<figure><img src="figures/live_pass.png"><figcaption>Live: good tablet passes</figcaption></figure>
+<figure><img src="figures/live_pass_reject.png"><figcaption>Live: good and broken</figcaption></figure>
+<figure><img src="figures/live_heatmap.png"><figcaption>Live: ink mark found</figcaption></figure>
+<figure><img src="figures/live_advice.png"><figcaption>Live: Llama advice</figcaption></figure>
+<figure><img src="figures/live_touching.png"><figcaption>Live: touching tablets</figcaption></figure>
+</div>
+
 ## Scope
 
 The station works in stop-and-shoot mode: the operator places a tray on a matte dark surface under a fixed
@@ -141,6 +151,23 @@ Model load 2.4 s; app PSS 329 MB before loading Llama, 1167 MB after loading.
 <!-- END:advisory -->
 
 The first prompt was tested on one set of 50 cases and improved; the final prompt is reported on 50 new cases.
+
+### Teaching a new product (live camera)
+
+The detector learns "normal" from good tablets only, so a new product can be added without labelling defects.
+To show this on real hardware, a paracetamol product was taught from 16 phone photos of two real tablets
+(`ml/scripts/07_new_product.py`) and loaded on the phone through a Product switch, without rebuilding the app.
+
+| Step | Result |
+|---|---|
+| Training data | 6 views of one good tablet, augmented to 205 crops; cropped exactly like the app |
+| Held-out good views | scores 2.00 to 3.48 |
+| Defective tablets (ink mark, broken halves) | scores 7.70 to 11.88 |
+| Live camera, good tablet (19 captures) | scores 3.51 to 4.40, so the pass limit was set to 5.0 |
+| Final limits | PASS below 5.0, RE-INSPECT 5.0 to 7.70, REJECT from 7.70 |
+
+With a single good tablet this is a demonstration of the workflow, not a measured accuracy; the accuracy figures
+in this report come from the MVTec evaluation above.
 
 ## Hardware Utilisation
 
