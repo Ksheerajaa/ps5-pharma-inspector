@@ -1,0 +1,888 @@
+<!doctype html><html><head><meta charset='utf-8'><title>PS5 Pharma Inspector report</title><style>
+@font-face { font-family: 'Outfit'; src: url('fonts/Outfit.ttf'); font-weight: 100 900; }
+@font-face { font-family: 'Arimo'; src: url('fonts/Arimo-400.ttf'); font-weight: 400; }
+@font-face { font-family: 'Arimo'; src: url('fonts/Arimo-600.ttf'); font-weight: 600; }
+@page { size: A4; margin: 14mm 0 14mm 0; }
+@page :first { margin-top: 0; }
+* { box-sizing: border-box; }
+body { font-family: 'Arimo', 'Helvetica Neue', Arial, sans-serif; font-size: 9.6pt; line-height: 1.5; color: #1b2430; margin: 0; }
+.content { padding: 0 16mm; }
+.cover { position: relative; overflow: hidden; z-index: 0; padding: 22mm 16mm 16mm 16mm; margin: 0 -16mm 6mm -16mm; }
+.kicker { font-size: 9pt; letter-spacing: 1.5px; text-transform: uppercase; color: #0b2a5b; font-weight: 600; }
+h1.title { font-family: 'Outfit', sans-serif; font-size: 46pt; font-weight: 400; letter-spacing: -1.5px; color: #0b1b33; margin: 6px 0 4px 0; border: none; }
+.star { font-size: 26pt; vertical-align: top; margin-left: 4px; color: #0b2a5b; }
+.subtitle { font-size: 10.5pt; color: #24364f; }
+h2 { font-family: 'Outfit', sans-serif; font-size: 18pt; font-weight: 400; color: #0b1b33; background: #dceafc; border-bottom: 2px solid #0b2a5b;
+     padding: 7px 12px 7px 50px; margin: 26px 0 10px 0; position: relative; page-break-after: avoid; }
+h2::before { content: "↘"; position: absolute; left: 12px; top: 5px; font-size: 20pt; color: #0b2a5b; }
+h3 { font-family: 'Outfit', sans-serif; font-size: 12pt; font-weight: 600; color: #0b2a5b; margin: 16px 0 6px 0; page-break-after: avoid; }
+p { margin: 6px 0; }
+ul { margin: 4px 0 8px 0; padding-left: 18px; }
+li { margin: 2px 0; }
+table { border-collapse: collapse; width: 100%; margin: 8px 0 12px 0; font-size: 8.8pt; page-break-inside: avoid; }
+th { text-align: left; font-weight: 600; border-top: 1px solid #0b2a5b; border-bottom: 1px solid #0b2a5b; padding: 5px 8px; }
+td { border-bottom: 1px solid #c9d6e8; padding: 4px 8px; vertical-align: top; }
+code { font-family: Consolas, monospace; font-size: 8.4pt; background: #eef4fd; padding: 0 3px; border-radius: 3px; }
+.stats { display: flex; gap: 8px; margin: 12px 0 14px 0; }
+.stat { flex: 1; position: relative; overflow: hidden; z-index: 0; color: #fff; border-radius: 10px; padding: 12px 12px; }
+.stat .num { font-family: 'Outfit', sans-serif; font-size: 22pt; font-weight: 300; letter-spacing: -0.5px; }
+.stat .lbl { font-size: 8pt; opacity: 0.9; }
+.figs { display: flex; gap: 6px; margin: 10px 0; page-break-inside: avoid; }
+figure { flex: 1; margin: 0; text-align: center; }
+figure img { width: 100%; border-radius: 8px; border: 1px solid #c9d6e8; }
+figcaption { font-size: 7.8pt; color: #4a5a70; margin-top: 3px; }
+strong { color: #0b1b33; }
+img.bg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: -1; border: none; border-radius: 0; margin: 0; }
+img.chart { display: block; margin: 8px 0 12px 0; page-break-inside: avoid; }
+.row { display: flex; gap: 14px; align-items: center; page-break-inside: avoid; }
+.note { flex: 1; font-size: 9.4pt; color: #24364f; border-left: 3px solid #2f6fd1; padding-left: 10px; }
+</style></head><body><div class='content'><div class="cover"><img class="bg" src="figures/bg_cover.png">
+<div class="kicker">Bharat AI-SoC Student Challenge · Problem Statement 5</div>
+<h1 class="title">Pharma Inspector<span class="star">*</span></h1>
+<div class="subtitle">Offline AI tablet inspection on an Android phone · Final Project Report · Built with Llama</div>
+</div>
+
+<h2>Executive Summary</h2>
+<p>Pharma Inspector turns an ordinary Android phone into an offline inspection station for loose tablets. The
+phone camera looks at a tray, a vision model finds and scores every tablet, calibrated rules give each one a
+verdict, and Llama 3.2 running on the same phone explains the verdict to the operator in plain language. No
+cloud, no GPU and no network permission are used.</p>
+<div class="stats">
+<div class="stat"><img class="bg" src="figures/bg_stat.png"><div class="num">0.95</div><div class="lbl">F1 on held-out images, measured on the phone</div></div>
+<div class="stat"><img class="bg" src="figures/bg_stat.png"><div class="num">51 ms</div><div class="lbl">vision per tablet (median)</div></div>
+<div class="stat"><img class="bg" src="figures/bg_stat.png"><div class="num">~5 s</div><div class="lbl">Llama advice per flagged tablet</div></div>
+<div class="stat"><img class="bg" src="figures/bg_stat.png"><div class="num">0</div><div class="lbl">network permissions in the app</div></div>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Goals</th>
+<th>How the project meets them</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Detect defective tablets reliably</td>
+<td>PatchCore-lite anomaly detector, calibrated on separate data, evaluated once on held-out images</td>
+</tr>
+<tr>
+<td>Run in real time on a phone</td>
+<td>Both models on the phone CPU; a 9-tablet tray is decided in under one second</td>
+</tr>
+<tr>
+<td>Give the operator useful advice</td>
+<td>Llama 3.2 1B on ExecuTorch explains each flagged tablet in four short lines</td>
+</tr>
+<tr>
+<td>Make the operator's job easy</td>
+<td>Clear verdict banner, labelled boxes, per-item cards, local log with CSV export</td>
+</tr>
+</tbody>
+</table>
+<div class="figs">
+<figure><img src="figures/ui_camera.png"><figcaption>Live camera</figcaption></figure>
+<figure><img src="figures/ui_tray_result.png"><figcaption>Tray verdict</figcaption></figure>
+<figure><img src="figures/ui_item_advice.png"><figcaption>Defect and Llama advice</figcaption></figure>
+<figure><img src="figures/ui_cluster.png"><figcaption>Touching tablets flagged</figcaption></figure>
+<figure><img src="figures/ui_history.png"><figcaption>Inspection log</figcaption></figure>
+</div>
+
+<h2>Scope</h2>
+<p>The station works in stop-and-shoot mode: the operator places a tray on a matte dark surface under a fixed
+phone, and the app inspects once the scene is still (or on a button press).</p>
+<p>Deliverables</p>
+<ul>
+<li>Android app with camera and replay modes, per-item verdicts, severity, confidence and advice</li>
+<li>Vision model (ONNX Runtime) and Llama 3.2 1B (ExecuTorch), both running on the phone</li>
+<li>Local inspection log with CSV export, and a benchmark screen for on-device measurements</li>
+<li>Source code, scripts that regenerate every result, this report and a demo video</li>
+</ul>
+<p>Out of scope: moving conveyors at line speed, stacked tablets, underside defects, blister packs and rejection
+hardware. The app alerts and logs; it does not move tablets.</p>
+<h2>Methodology</h2>
+<p>The system has two separate pipelines that meet at one JSON record.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Quality gate</td>
+<td>Frames that are too dark, too bright, glared or blurred are refused before any model runs</td>
+</tr>
+<tr>
+<td>2. Item finder</td>
+<td>OpenCV finds each tablet; touching, cut-off, unknown or extra items are marked and never passed</td>
+</tr>
+<tr>
+<td>3. Vision model</td>
+<td>Each tablet is rotated, cropped to 256 x 256 and scored by PatchCore-lite, which also returns a defect heatmap</td>
+</tr>
+<tr>
+<td>4. Decision rules</td>
+<td>Calibrated thresholds give PASS, RE-INSPECT or REJECT, plus severity (Low, Medium, High) and confidence</td>
+</tr>
+<tr>
+<td>5. Hand-off</td>
+<td>One JSON record per flagged tablet: verdict, defect type, severity, confidence, location, box</td>
+</tr>
+<tr>
+<td>6. Advisory</td>
+<td>Llama 3.2 1B writes four lines (Do, Why, Check, Log); a validator checks them, otherwise a template is used</td>
+</tr>
+</tbody>
+</table>
+<h3>Vision pipeline</h3>
+<ul>
+<li><strong>Model:</strong> PatchCore-lite. ResNet-18 features from two layers, projected to 128 dimensions and compared with a
+  memory bank of normal patches. It learns from good tablets only, so it needs no defect labels.</li>
+<li><strong>Runtime:</strong> ONNX Runtime Android 1.23.2 on the CPU, 4 threads, one tablet at a time.</li>
+<li><strong>Data:</strong> MVTec AD <code>pill</code>. Training uses good images only; thresholds use a separate calibration split; all
+  accuracy numbers come from a held-out evaluation split used once for the final configuration.</li>
+<li><strong>Verdict:</strong> below <code>t_pass</code> is PASS, above <code>t_reject</code> is REJECT, in between is RE-INSPECT. Severity comes from
+  defect size and type. Defect type is indicative and rule-based.</li>
+</ul>
+<h3>Advisory pipeline</h3>
+<ul>
+<li><strong>Model:</strong> Llama 3.2 1B Instruct, exported with ExecuTorch 1.5.1 for the XNNPACK CPU backend.</li>
+<li><strong>Input:</strong> the JSON record only. Llama never sees images and never changes the verdict.</li>
+<li><strong>Output:</strong> four labelled lines. The first line always starts with the action set by the rules (Reject,
+  Re-inspect, Release), so the advice cannot contradict the decision.</li>
+<li><strong>Safety net:</strong> each answer is checked for format, length, the right action word, no invented numbers and no
+  made-up re-inspection results. Anything that fails is replaced by a fixed template, and the log records why.</li>
+<li><strong>Flow:</strong> only flagged tablets go to Llama, through a small queue that handles rejects first.</li>
+</ul>
+<h2>Results</h2>
+<h3>Detection accuracy (on the phone)</h3>
+<!-- BEGIN:detection -->
+<p>Held-out evaluation split, run once on the phone (memory bank 4096). A tablet counts as flagged when its verdict is RE-INSPECT or REJECT. Source: <code>results/detection_eval_device.json</code>.</p>
+<table>
+<thead>
+<tr>
+<th>metric</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>images (defective / good)</td>
+<td>86 (73 / 13)</td>
+</tr>
+<tr>
+<td>precision</td>
+<td>0.958</td>
+</tr>
+<tr>
+<td>recall</td>
+<td>0.945</td>
+</tr>
+<tr>
+<td>F1</td>
+<td>0.952</td>
+</tr>
+<tr>
+<td>image AUROC</td>
+<td>0.940</td>
+</tr>
+<tr>
+<td>miss rate</td>
+<td>0.055</td>
+</tr>
+<tr>
+<td>false-alarm rate</td>
+<td>0.231</td>
+</tr>
+<tr>
+<td>TP / FP / FN / TN</td>
+<td>69 / 3 / 4 / 10</td>
+</tr>
+<tr>
+<td>not inspected</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Verdicts:</p>
+<table>
+<thead>
+<tr>
+<th>truth</th>
+<th>PASS</th>
+<th>RE-INSPECT</th>
+<th>REJECT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>good</td>
+<td>10</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>defective</td>
+<td>4</td>
+<td>12</td>
+<td>57</td>
+</tr>
+</tbody>
+</table>
+<!-- END:detection -->
+
+<p><img class="chart" src="figures/fig_verdicts.png" style="width:100%"></p>
+<p><img class="chart" src="figures/fig_per_class.png" style="width:100%"></p>
+<h3>Speed</h3>
+<p><img class="chart" src="figures/fig_latency.png" style="width:100%"></p>
+<div class="row"><img class="chart" src="figures/fig_frames.png" style="width:48%"><div class="note">A stop-and-shoot station needs one decision per tray, not video-rate inference. A 9-tablet tray is decided in under one second, faster than an operator can swap trays, and the advice arrives without blocking the next capture.</div></div>
+
+<!-- BEGIN:throughput -->
+<table>
+<thead>
+<tr>
+<th>measurement</th>
+<th>value</th>
+<th>derived</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>full pipeline, replay, 60 s</td>
+<td>9.47 frames/s</td>
+<td>568.2 items/min</td>
+<td>replay frames (first 20 non-golden replay images), single-item frames; camera not involved</td>
+</tr>
+<tr>
+<td>golden parity (device vs PyTorch score)</td>
+<td>n = 5</td>
+<td>median rel. diff 1.4%, max 3.4%</td>
+<td>difference includes resize (OpenCV INTER_AREA on device vs PIL bilinear-antialias in PyTorch) and fp32 runtime differences</td>
+</tr>
+</tbody>
+</table>
+<!-- END:throughput -->
+
+<h3>Advisory quality and speed</h3>
+<p><img class="chart" src="figures/fig_advisory.png" style="width:100%"></p>
+<!-- BEGIN:advisory -->
+<table>
+<thead>
+<tr>
+<th>run</th>
+<th>n</th>
+<th>format-valid</th>
+<th>manually consistent</th>
+<th>TTFT s (median / p95)</th>
+<th>decode tok/s (median)</th>
+<th>tokens (median)</th>
+<th>total s (median / p95 / max)</th>
+<th>PSS MB (median)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1 prompt seed2026</td>
+<td>50</td>
+<td>26/50</td>
+<td>not reviewed</td>
+<td>1.05 / 1.12</td>
+<td>17.9</td>
+<td>69</td>
+<td>5.00 / 12.00 / 37.7</td>
+<td>1055</td>
+</tr>
+<tr>
+<td>v2 prompt seed2027</td>
+<td>50</td>
+<td>50/50</td>
+<td>47/50</td>
+<td>2.09 / 2.26</td>
+<td>17.4</td>
+<td>51</td>
+<td>4.99 / 5.32 / 6.5</td>
+<td>1067</td>
+</tr>
+</tbody>
+</table>
+<p>Model load 2.4 s; app PSS 329 MB before loading Llama, 1167 MB after loading.</p>
+<!-- END:advisory -->
+
+<p>The first prompt was tested on one set of 50 cases and improved; the final prompt is reported on 50 new cases.</p>
+<h2>Hardware Utilisation</h2>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Device</td>
+<td>Nothing Phone (3a), Android 17, 8 GB RAM</td>
+</tr>
+<tr>
+<td>Compute</td>
+<td>CPU only for both models; GPU and NPU not used</td>
+</tr>
+<tr>
+<td>Threads</td>
+<td>Vision thread (ONNX Runtime, 4 threads), advisory thread (Llama), camera thread, UI thread</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>About 330 MB with vision only; about 1.17 GB with Llama loaded (app PSS)</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>Vision model 11 to 13 MB per bank; Llama model 820.6 MB; tokenizer 2.1 MB</td>
+</tr>
+<tr>
+<td>Sustained load</td>
+<td>Throughput eased from about 4.0 to 3.1 frames per second as the phone warmed from 31 °C to 42 °C (chart below)</td>
+</tr>
+</tbody>
+</table>
+<p><img class="chart" src="figures/fig_longrun.png" style="width:100%"></p>
+<h2>Optimisation Techniques</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Technique</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vision model</td>
+<td>ResNet-18 instead of WideResNet-50, 128-dimension projection, coreset memory bank</td>
+<td>Phone-sized model with three accuracy/speed options</td>
+</tr>
+<tr>
+<td>Vision runtime</td>
+<td>Whole model exported as one ONNX graph, fixed input, batch 1</td>
+<td>One model call per tablet</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>Quality gate and item finder run before the model; PASS items skip Llama</td>
+<td>No wasted inference</td>
+</tr>
+<tr>
+<td>Capture</td>
+<td>Inspect only when the scene is still</td>
+<td>No continuous video load</td>
+</tr>
+<tr>
+<td>Llama size</td>
+<td>ExecuTorch 8-bit activations, 4-bit weights (group 32), 4-bit embeddings</td>
+<td>1B model in 820.6 MB</td>
+</tr>
+<tr>
+<td>Llama runtime</td>
+<td>XNNPACK backend, KV cache, SDPA custom op, 1024-token context</td>
+<td>About 17 tokens per second on the CPU</td>
+</tr>
+<tr>
+<td>Llama output</td>
+<td>Pre-filled first line, early stop after four lines, token cap</td>
+<td>Slowest 5% of answers went from 12.0 s to 5.3 s</td>
+</tr>
+<tr>
+<td>Scheduling</td>
+<td>Bounded queue, rejects first, timeout with template fallback</td>
+<td>The line never waits for the language model</td>
+</tr>
+</tbody>
+</table>
+<h2>Conclusion</h2>
+<p>Pharma Inspector shows that a single mid-range phone can find, judge and explain tablet defects entirely
+offline. Next steps are a counted test on real tablets, power measurements, a trained defect-type classifier and
+a port to Raspberry Pi 5 with a Hailo accelerator.</p>
+<p>The app produces illustrative engineering guidance, not GMP or regulatory advice.</p>
+<h2>Appendix</h2>
+<h3>A. Data split</h3>
+<!-- BEGIN:dataset -->
+<p>train_good 241 (model fitting), val_good 26 (calibration); MVTec test split into calib 81 / eval 86 (seed 42, stratified).</p>
+<table>
+<thead>
+<tr>
+<th>MVTec test class</th>
+<th>total</th>
+<th>calib</th>
+<th>eval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color</td>
+<td>25</td>
+<td>12</td>
+<td>13</td>
+</tr>
+<tr>
+<td>combined</td>
+<td>17</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>contamination</td>
+<td>21</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr>
+<td>crack</td>
+<td>26</td>
+<td>13</td>
+<td>13</td>
+</tr>
+<tr>
+<td>faulty_imprint</td>
+<td>19</td>
+<td>9</td>
+<td>10</td>
+</tr>
+<tr>
+<td>good</td>
+<td>26</td>
+<td>13</td>
+<td>13</td>
+</tr>
+<tr>
+<td>pill_type</td>
+<td>9</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>scratch</td>
+<td>24</td>
+<td>12</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<!-- END:dataset -->
+
+<h3>B. Calibration</h3>
+<!-- BEGIN:calibration -->
+<table>
+<thead>
+<tr>
+<th>bank</th>
+<th>calib image AUROC</th>
+<th>t_pass (P5 defective)</th>
+<th>t_reject (P95 good)</th>
+<th>t_pix</th>
+<th>pixel F1 (calib)</th>
+<th>severity area cuts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>256</td>
+<td>0.894</td>
+<td>4.431</td>
+<td>4.914</td>
+<td>4.438</td>
+<td>0.725</td>
+<td>0.79% / 1.47%</td>
+</tr>
+<tr>
+<td>1024</td>
+<td>0.946</td>
+<td>3.523</td>
+<td>3.998</td>
+<td>3.622</td>
+<td>0.746</td>
+<td>0.85% / 1.86%</td>
+</tr>
+<tr>
+<td>4096</td>
+<td>0.949</td>
+<td>2.906</td>
+<td>3.391</td>
+<td>3.023</td>
+<td>0.759</td>
+<td>0.94% / 2.04%</td>
+</tr>
+</tbody>
+</table>
+<!-- END:calibration -->
+
+<h3>C. Results per defect class</h3>
+<!-- BEGIN:per_class -->
+<table>
+<thead>
+<tr>
+<th>eval class</th>
+<th>n</th>
+<th>PASS</th>
+<th>RE-INSPECT</th>
+<th>REJECT</th>
+<th>rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color</td>
+<td>13</td>
+<td>0</td>
+<td>2</td>
+<td>11</td>
+<td>flagged 13/13</td>
+</tr>
+<tr>
+<td>combined</td>
+<td>9</td>
+<td>0</td>
+<td>2</td>
+<td>7</td>
+<td>flagged 9/9</td>
+</tr>
+<tr>
+<td>contamination</td>
+<td>11</td>
+<td>0</td>
+<td>2</td>
+<td>9</td>
+<td>flagged 11/11</td>
+</tr>
+<tr>
+<td>crack</td>
+<td>13</td>
+<td>2</td>
+<td>3</td>
+<td>8</td>
+<td>flagged 11/13</td>
+</tr>
+<tr>
+<td>faulty_imprint</td>
+<td>10</td>
+<td>0</td>
+<td>2</td>
+<td>8</td>
+<td>flagged 10/10</td>
+</tr>
+<tr>
+<td>good</td>
+<td>13</td>
+<td>10</td>
+<td>2</td>
+<td>1</td>
+<td>false alarms 3/13</td>
+</tr>
+<tr>
+<td>pill_type</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>5</td>
+<td>flagged 5/5</td>
+</tr>
+<tr>
+<td>scratch</td>
+<td>12</td>
+<td>2</td>
+<td>1</td>
+<td>9</td>
+<td>flagged 10/12</td>
+</tr>
+</tbody>
+</table>
+<!-- END:per_class -->
+
+<h3>D. Robustness tests (synthetic frames)</h3>
+<!-- BEGIN:testcases -->
+<p>All frames are synthetic (MVTec tiles on a matched background). 17/20 pass.</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>scenario</th>
+<th>expected</th>
+<th>observed</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>Empty tray</td>
+<td>NO_ITEMS</td>
+<td>NO_ITEMS (place items)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Blurred frame</td>
+<td>BAD_IMAGE (blur)</td>
+<td>BAD_IMAGE (blur)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>F3a</td>
+<td>Too dark</td>
+<td>BAD_IMAGE (dark)</td>
+<td>BAD_IMAGE (dark)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>F3b</td>
+<td>Too bright</td>
+<td>BAD_IMAGE (bright)</td>
+<td>BAD_IMAGE (bright)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Glare patch</td>
+<td>BAD_IMAGE (glare)</td>
+<td>BAD_IMAGE (glare)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>I1</td>
+<td>One good item</td>
+<td>1 item, OK, PASS</td>
+<td>#1 OK PASS</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>One defective item</td>
+<td>1 item, RE-INSPECT or REJECT</td>
+<td>#1 OK REJECT</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>I3</td>
+<td>Mixed tray 2x2</td>
+<td>4 items inspected; verdicts compared with single-image runs</td>
+<td>#1 OK REJECT; #2 OK PASS; #3 OK REJECT; #4 OK REJECT / agreement with single-image eval verdicts 4/4</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>I3</td>
+<td>Mixed tray 3x3</td>
+<td>9 items inspected; verdicts compared with single-image runs</td>
+<td>#1 OK REJECT; #2 OK PASS; #3 OK RE-INSPECT; #4 OK RE-INSPECT; #5 OK REJECT; #6 OK RE-INSPECT; #7 OK REJECT; #8</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>I4</td>
+<td>Touching items</td>
+<td>CLUSTER, not inspected</td>
+<td>#1 CLUSTER</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>I5</td>
+<td>Item cut by frame edge</td>
+<td>PARTIAL for the cut item; other item inspected</td>
+<td>#1 OK PASS; #2 PARTIAL</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>I6</td>
+<td>Foreign objects</td>
+<td>UNKNOWN_OBJECT for both objects, never PASS</td>
+<td>#1 OK PASS; #2 UNKNOWN_OBJECT; #3 UNKNOWN_OBJECT</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>I6b</td>
+<td>Dark foreign object on dark fixture (known limitation)</td>
+<td>UNKNOWN_OBJECT</td>
+<td>#1 OK PASS</td>
+<td>FAIL</td>
+</tr>
+<tr>
+<td>I7</td>
+<td>More than 12 items</td>
+<td>12 inspected, 4 TOO_MANY</td>
+<td>#1 OK PASS; #2 OK PASS; #3 OK PASS; #4 OK PASS; #5 OK PASS; #6 OK PASS; #7 OK PASS; #8 OK PASS; #9 OK PASS; #1</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>I8</td>
+<td>Wrong product (capsule)</td>
+<td>UNKNOWN_OBJECT</td>
+<td>#1 CLUSTER</td>
+<td>FAIL</td>
+</tr>
+<tr>
+<td>I9</td>
+<td>Mixed tray with cluster</td>
+<td>3 inspected + 1 CLUSTER needing attention</td>
+<td>#1 OK PASS; #2 OK PASS; #3 OK PASS; #4 CLUSTER</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>I10.0</td>
+<td>Near-threshold calib defect</td>
+<td>RE-INSPECT (calib score in band)</td>
+<td>#1 OK RE-INSPECT score 3.0923638</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>I10.1</td>
+<td>Near-threshold calib defect</td>
+<td>RE-INSPECT (calib score in band)</td>
+<td>#1 OK REJECT score 3.6350985</td>
+<td>FAIL</td>
+</tr>
+<tr>
+<td>I10.2</td>
+<td>Near-threshold calib defect</td>
+<td>RE-INSPECT (calib score in band)</td>
+<td>#1 OK RE-INSPECT score 3.1241007</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>I10.3</td>
+<td>Near-threshold calib defect</td>
+<td>RE-INSPECT (calib score in band)</td>
+<td>#1 OK RE-INSPECT score 3.2004256</td>
+<td>PASS</td>
+</tr>
+</tbody>
+</table>
+<!-- END:testcases -->
+
+<h3>E. Latency tables</h3>
+<!-- BEGIN:vision_latency -->
+<p>Nothing Phone (3a), ONNX Runtime 1.23.2 on CPU (4 threads), 200 timed runs after 20 warm-up runs.</p>
+<table>
+<thead>
+<tr>
+<th>bank</th>
+<th>n</th>
+<th>inference ms (median / p95)</th>
+<th>post-processing ms (median / p95)</th>
+<th>total per item ms (median / p95)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>256</td>
+<td>200</td>
+<td>38 / 44</td>
+<td>42 / 45</td>
+<td>80 / 87</td>
+</tr>
+<tr>
+<td>1024</td>
+<td>200</td>
+<td>39 / 43</td>
+<td>39 / 42</td>
+<td>78 / 84</td>
+</tr>
+<tr>
+<td>4096</td>
+<td>200</td>
+<td>51 / 59</td>
+<td>39 / 44</td>
+<td>92 / 103</td>
+</tr>
+</tbody>
+</table>
+<!-- END:vision_latency -->
+
+<!-- BEGIN:frame_latency -->
+<p>Single replay frame each (n = 1 per row), bank 4096. Frame time covers gate, item finder, crops, and vision plus analysis per item; it excludes image decoding.</p>
+<table>
+<thead>
+<tr>
+<th>frame</th>
+<th>items inspected</th>
+<th>frame ms</th>
+<th>sum of vision ms</th>
+<th>frame ms per item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 item</td>
+<td>1</td>
+<td>78</td>
+<td>52</td>
+<td>78</td>
+</tr>
+<tr>
+<td>4 items</td>
+<td>4</td>
+<td>382</td>
+<td>207</td>
+<td>96</td>
+</tr>
+<tr>
+<td>9 items</td>
+<td>9</td>
+<td>865</td>
+<td>463</td>
+<td>96</td>
+</tr>
+</tbody>
+</table>
+<p>Across the 86 single-item eval frames: vision median 55 ms (p95 72), frame median 116 ms (p95 144).</p>
+<!-- END:frame_latency -->
+
+<h3>F. 15-minute run</h3>
+<!-- BEGIN:longrun -->
+<table>
+<thead>
+<tr>
+<th>measurement</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>duration / frames</td>
+<td>900 s / 3041</td>
+</tr>
+<tr>
+<td>throughput first 2 min / last 2 min</td>
+<td>4.0 / 3.1 frames/s</td>
+</tr>
+<tr>
+<td>battery temperature start / end</td>
+<td>31.0 / 42.0 C</td>
+</tr>
+<tr>
+<td>max Android thermal status (first time &gt;= 3)</td>
+<td>3 (660 s)</td>
+</tr>
+<tr>
+<td>PSS max</td>
+<td>1232 MB</td>
+</tr>
+<tr>
+<td>advisory queue depth (end)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>battery</td>
+<td>100% -&gt; 100% (charging: power not measured)</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <code>results/device/longrun_15min_20261122_232431.csv</code>.</p>
+<!-- END:longrun -->
+
+<h3>G. Reproducibility and licences</h3>
+<ul>
+<li>Build, run and reproduce: <code>README.md</code>. Every table and chart here is regenerated with <code>python bench/make_tables.py</code> and <code>python bench/make_figures.py</code>;
+  the PDF with <code>python report/build_pdf.py</code>. Decisions with reasons: <code>docs/DECISIONS.md</code>.</li>
+<li>MVTec AD is CC BY-NC-SA 4.0 (non-commercial); images are not included in the repository.</li>
+<li>Llama 3.2 is licensed under the Llama 3.2 Community License, Copyright © Meta Platforms, Inc. All Rights
+  Reserved. Built with Llama.</li>
+</ul></div></body></html>
