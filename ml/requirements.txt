@@ -1,0 +1,7 @@
+pytest==8.2.2
+torch==2.12.1
+torchvision==0.27.1
+executorch==1.5.1
+Pillow==12.2.0
+onnx==1.20.1
+onnxruntime==1.23.2

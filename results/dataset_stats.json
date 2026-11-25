@@ -1,0 +1,52 @@
+{
+  "pill": {
+    "train_good": 241,
+    "val_good": 26,
+    "test_good": 26,
+    "defective": 141,
+    "calib": 81,
+    "eval": 86,
+    "test_by_class": {
+      "color": {
+        "total": 25,
+        "calib": 12,
+        "eval": 13
+      },
+      "combined": {
+        "total": 17,
+        "calib": 8,
+        "eval": 9
+      },
+      "contamination": {
+        "total": 21,
+        "calib": 10,
+        "eval": 11
+      },
+      "crack": {
+        "total": 26,
+        "calib": 13,
+        "eval": 13
+      },
+      "faulty_imprint": {
+        "total": 19,
+        "calib": 9,
+        "eval": 10
+      },
+      "good": {
+        "total": 26,
+        "calib": 13,
+        "eval": 13
+      },
+      "pill_type": {
+        "total": 9,
+        "calib": 4,
+        "eval": 5
+      },
+      "scratch": {
+        "total": 24,
+        "calib": 12,
+        "eval": 12
+      }
+    }
+  }
+}

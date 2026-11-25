@@ -1,0 +1,144 @@
+file,frame_status,frame_reason,n_items,item_idx,item_status,item_reason,score,verdict,severity,defect_type,area_pct,location,confidence,frame_ms,preprocess_ms,vision_ms
+eval/color/001.png,OK,,1,1,OK,,6.653423,REJECT,HIGH,deformation,3.6239624,right,0.997065,605,10,197
+eval/color/003.png,OK,,1,1,OK,,6.3827686,REJECT,HIGH,deformation,2.9342651,bottom,0.99524856,144,9,72
+eval/color/006.png,OK,,1,1,OK,,5.269808,REJECT,HIGH,contamination or colour fault,1.5106201,top,0.96630263,115,8,51
+eval/color/007.png,OK,,1,1,OK,,3.5571423,REJECT,LOW,unspecified anomaly,0.51727295,top,0.5734883,117,8,52
+eval/color/008.png,OK,,1,1,OK,,5.0059605,REJECT,MEDIUM,unspecified anomaly,0.9628296,right,0.94708246,126,8,60
+eval/color/010.png,OK,,1,1,OK,,3.00686,RE-INSPECT,LOW,unspecified anomaly,0.0,none,0.54474086,72,8,52
+eval/color/012.png,OK,,1,1,OK,,6.9389086,REJECT,MEDIUM,unspecified anomaly,1.8798828,right,0.9982356,115,8,53
+eval/color/016.png,OK,,1,1,OK,,4.8617535,REJECT,MEDIUM,unspecified anomaly,1.1016846,left,0.9325793,120,9,53
+eval/color/017.png,OK,,1,1,OK,,3.387754,RE-INSPECT,LOW,unspecified anomaly,0.3616333,right,0.5016356,115,8,51
+eval/color/020.png,OK,,1,1,OK,,5.0669074,REJECT,MEDIUM,unspecified anomaly,1.5090942,top,0.95228153,113,8,51
+eval/color/021.png,OK,,1,1,OK,,5.1885543,REJECT,MEDIUM,unspecified anomaly,1.6647339,bottom,0.96124184,128,8,62
+eval/color/023.png,OK,,1,1,OK,,6.7526517,REJECT,HIGH,deformation,3.2852173,left,0.99754065,122,9,54
+eval/color/024.png,OK,,1,1,OK,,3.9334986,REJECT,LOW,unspecified anomaly,0.5844116,right,0.7248245,125,9,55
+eval/combined/000.png,OK,,1,1,OK,,4.7126803,REJECT,HIGH,deformation,3.1982422,right,0.9137776,127,9,57
+eval/combined/002.png,OK,,1,1,OK,,7.2120876,REJECT,HIGH,deformation,4.4921875,left,0.99891627,124,9,54
+eval/combined/003.png,OK,,1,1,OK,,7.8986263,REJECT,HIGH,deformation,4.122925,left,0.9996819,124,9,56
+eval/combined/006.png,OK,,1,1,OK,,2.9557247,RE-INSPECT,LOW,unspecified anomaly,0.0,none,0.5220062,78,9,56
+eval/combined/007.png,OK,,1,1,OK,,3.2941701,RE-INSPECT,LOW,unspecified anomaly,0.5065918,centre,0.54332745,132,9,61
+eval/combined/012.png,OK,,1,1,OK,,6.260022,REJECT,HIGH,contamination or colour fault,4.411316,upper-right,0.9940903,132,9,62
+eval/combined/013.png,OK,,1,1,OK,,5.6612015,REJECT,HIGH,contamination or colour fault,3.9260864,right,0.9829657,123,9,56
+eval/combined/015.png,OK,,1,1,OK,,4.102692,REJECT,HIGH,contamination or colour fault,1.3534546,lower-right,0.7808818,133,9,64
+eval/combined/016.png,OK,,1,1,OK,,6.756552,REJECT,HIGH,contamination or colour fault,8.506775,right,0.9975577,221,9,158
+eval/contamination/000.png,OK,,1,1,OK,,4.368192,REJECT,HIGH,contamination or colour fault,1.6723633,top,0.85134286,120,8,52
+eval/contamination/003.png,OK,,1,1,OK,,9.61564,REJECT,HIGH,contamination or colour fault,5.5160522,bottom,0.9999852,146,8,80
+eval/contamination/004.png,OK,,1,1,OK,,3.6845968,REJECT,LOW,unspecified anomaly,0.5950928,top,0.62803966,174,9,96
+eval/contamination/006.png,OK,,1,1,OK,,3.7560475,REJECT,MEDIUM,unspecified anomaly,0.9918213,left,0.65734273,128,9,60
+eval/contamination/008.png,OK,,1,1,OK,,4.113799,REJECT,MEDIUM,unspecified anomaly,1.3275146,right,0.7842584,116,9,53
+eval/contamination/009.png,OK,,1,1,OK,,3.0295734,RE-INSPECT,LOW,unspecified anomaly,0.0061035156,left,0.5547853,115,8,52
+eval/contamination/011.png,OK,,1,1,OK,,6.7027125,REJECT,HIGH,deformation,4.940796,left,0.9973118,113,8,51
+eval/contamination/013.png,OK,,1,1,OK,,3.2967315,RE-INSPECT,LOW,unspecified anomaly,0.28076172,right,0.54219174,117,8,51
+eval/contamination/015.png,OK,,1,1,OK,,5.906227,REJECT,HIGH,deformation,4.9209595,top,0.9889381,109,9,51
+eval/contamination/017.png,OK,,1,1,OK,,7.802732,REJECT,HIGH,deformation,2.999878,centre,0.99962246,110,8,51
+eval/contamination/018.png,OK,,1,1,OK,,4.9697905,REJECT,HIGH,deformation,4.5181274,centre,0.94374853,112,9,52
+eval/crack/001.png,OK,,1,1,OK,,2.5474348,PASS,,none,0.0,none,0.6550689,72,9,51
+eval/crack/002.png,OK,,1,1,OK,,3.617639,REJECT,HIGH,crack or scratch,1.385498,bottom,0.59969276,114,8,52
+eval/crack/003.png,OK,,1,1,OK,,2.9436288,RE-INSPECT,LOW,unspecified anomaly,0.0,none,0.51661146,72,8,51
+eval/crack/005.png,OK,,1,1,OK,,4.714282,REJECT,HIGH,contamination or colour fault,3.050232,right,0.91400284,115,9,50
+eval/crack/006.png,OK,,1,1,OK,,3.414085,REJECT,MEDIUM,contamination or colour fault,0.5569458,bottom,0.51012415,115,9,52
+eval/crack/007.png,OK,,1,1,OK,,3.156137,RE-INSPECT,MEDIUM,contamination or colour fault,0.25177002,upper-left,0.6035705,113,8,51
+eval/crack/010.png,OK,,1,1,OK,,3.3795981,RE-INSPECT,LOW,unspecified anomaly,0.30670166,right,0.50527835,115,9,51
+eval/crack/012.png,OK,,1,1,OK,,4.0854683,REJECT,HIGH,contamination or colour fault,1.2802124,lower-left,0.77557087,113,8,51
+eval/crack/019.png,OK,,1,1,OK,,4.0003204,REJECT,HIGH,contamination or colour fault,2.3712158,bottom,0.7479877,116,8,51
+eval/crack/020.png,OK,,1,1,OK,,3.964214,REJECT,MEDIUM,unspecified anomaly,1.171875,centre,0.7356341,123,9,55
+eval/crack/021.png,OK,,1,1,OK,,4.3999877,REJECT,HIGH,contamination or colour fault,1.248169,right,0.85838985,125,9,55
+eval/crack/022.png,OK,,1,1,OK,,3.6683853,REJECT,HIGH,deformation,2.281189,top,0.62124866,124,9,55
+eval/crack/024.png,OK,,1,1,OK,,2.6631606,PASS,,none,0.0,none,0.6069793,79,8,57
+eval/faulty_imprint/000.png,OK,,1,1,OK,,3.321329,RE-INSPECT,LOW,unspecified anomaly,0.3692627,centre,0.53126454,135,9,64
+eval/faulty_imprint/001.png,OK,,1,1,OK,,3.789877,REJECT,MEDIUM,unspecified anomaly,1.2802124,centre,0.6708245,123,9,57
+eval/faulty_imprint/004.png,OK,,1,1,OK,,3.48868,REJECT,LOW,unspecified anomaly,0.78430176,centre,0.54333556,125,9,55
+eval/faulty_imprint/007.png,OK,,1,1,OK,,3.9233332,REJECT,HIGH,deformation,3.642273,centre,0.72118723,121,9,57
+eval/faulty_imprint/009.png,OK,,1,1,OK,,3.6699753,REJECT,HIGH,deformation,2.5482178,centre,0.6219169,126,9,57
+eval/faulty_imprint/010.png,OK,,1,1,OK,,4.2191377,REJECT,HIGH,deformation,3.289795,centre,0.8144006,124,10,55
+eval/faulty_imprint/012.png,OK,,1,1,OK,,3.5412414,REJECT,LOW,unspecified anomaly,0.6149292,centre,0.5665253,128,9,57
+eval/faulty_imprint/014.png,OK,,1,1,OK,,3.2827177,RE-INSPECT,LOW,unspecified anomaly,0.29144287,centre,0.54839975,127,10,55
+eval/faulty_imprint/016.png,OK,,1,1,OK,,4.326436,REJECT,HIGH,deformation,3.35083,centre,0.84165156,123,9,55
+eval/faulty_imprint/017.png,OK,,1,1,OK,,4.1220574,REJECT,MEDIUM,unspecified anomaly,1.9195557,centre,0.7867444,186,9,117
+eval/good/000.png,OK,,1,1,OK,,2.734815,PASS,,none,0.0,none,0.5760577,76,8,55
+eval/good/002.png,OK,,1,1,OK,,2.6923237,PASS,,none,0.0,none,0.59448266,79,9,56
+eval/good/005.png,OK,,1,1,OK,,2.6843631,PASS,,none,0.0,none,0.5979067,77,10,55
+eval/good/007.png,OK,,1,1,OK,,3.063155,RE-INSPECT,LOW,unspecified anomaly,0.019836426,right,0.569552,125,9,55
+eval/good/009.png,OK,,1,1,OK,,2.4688215,PASS,,none,0.0,none,0.68607897,78,9,55
+eval/good/010.png,OK,,1,1,OK,,3.4532998,REJECT,MEDIUM,contamination or colour fault,0.14953613,lower-right,0.52761334,127,9,55
+eval/good/011.png,OK,,1,1,OK,,2.5160835,PASS,,none,0.0,none,0.6676133,89,10,65
+eval/good/014.png,OK,,1,1,OK,,3.1961944,RE-INSPECT,MEDIUM,contamination or colour fault,0.27923584,right,0.5863254,127,10,56
+eval/good/016.png,OK,,1,1,OK,,2.8358927,PASS,,none,0.0,none,0.5314629,80,10,56
+eval/good/017.png,OK,,1,1,OK,,2.8557768,PASS,,none,0.0,none,0.52260756,80,8,53
+eval/good/018.png,OK,,1,1,OK,,2.8390915,PASS,,none,0.0,none,0.5300395,73,8,53
+eval/good/020.png,OK,,1,1,OK,,2.7502613,PASS,,none,0.0,none,0.56930417,73,8,50
+eval/good/022.png,OK,,1,1,OK,,2.8463714,PASS,,none,0.0,none,0.5267983,72,9,51
+eval/pill_type/002.png,OK,,1,1,OK,,7.527014,REJECT,HIGH,deformation,26.844788,centre,0.9993823,90,9,51
+eval/pill_type/003.png,OK,,1,1,OK,,7.265637,REJECT,HIGH,deformation,22.62268,centre,0.99901503,92,8,51
+eval/pill_type/004.png,OK,,1,1,OK,,7.1733055,REJECT,HIGH,deformation,27.494812,centre,0.9988386,93,8,50
+eval/pill_type/007.png,OK,,1,1,OK,,6.1606765,REJECT,HIGH,deformation,28.70636,centre,0.9929506,89,8,50
+eval/pill_type/008.png,OK,,1,1,OK,,6.486309,REJECT,HIGH,deformation,27.029419,centre,0.99604785,91,8,51
+eval/scratch/000.png,OK,,1,1,OK,,4.3462605,REJECT,MEDIUM,unspecified anomaly,1.361084,right,0.8463152,112,9,51
+eval/scratch/001.png,OK,,1,1,OK,,4.308346,REJECT,MEDIUM,unspecified anomaly,1.1108398,right,0.83729625,120,8,59
+eval/scratch/004.png,OK,,1,1,OK,,3.1725388,RE-INSPECT,MEDIUM,contamination or colour fault,0.5722046,centre,0.5965379,120,9,53
+eval/scratch/005.png,OK,,1,1,OK,,2.747217,PASS,,none,0.0,none,0.57063735,73,8,52
+eval/scratch/008.png,OK,,1,1,OK,,3.4465203,REJECT,MEDIUM,unspecified anomaly,1.095581,left,0.5245935,116,8,51
+eval/scratch/010.png,OK,,1,1,OK,,5.8619013,REJECT,HIGH,deformation,3.0258179,centre,0.98803735,111,9,51
+eval/scratch/013.png,OK,,1,1,OK,,3.766917,REJECT,MEDIUM,unspecified anomaly,2.017212,right,0.6617035,114,8,51
+eval/scratch/014.png,OK,,1,1,OK,,4.081114,REJECT,HIGH,deformation,3.9352417,bottom,0.7742138,111,9,51
+eval/scratch/018.png,OK,,1,1,OK,,4.641536,REJECT,HIGH,deformation,3.6956787,right,0.90322185,115,8,51
+eval/scratch/021.png,OK,,1,1,OK,,5.0840983,REJECT,HIGH,deformation,4.8599243,right,0.95365804,124,9,58
+eval/scratch/022.png,OK,,1,1,OK,,2.890468,PASS,,none,0.0,none,0.5071271,76,8,56
+eval/scratch/023.png,OK,,1,1,OK,,4.154178,REJECT,HIGH,contamination or colour fault,1.2420654,left,0.7962146,128,9,57
+golden/color/000.png,OK,,1,1,OK,,2.7822037,PASS,,none,0.0,none,0.5552589,78,9,56
+golden/color/002.png,OK,,1,1,OK,,3.432458,REJECT,LOW,unspecified anomaly,0.38146973,right,0.5183239,123,9,56
+golden/color/004.png,OK,,1,1,OK,,5.986714,REJECT,MEDIUM,unspecified anomaly,1.486206,left,0.99040556,125,9,54
+golden/color/005.png,OK,,1,1,OK,,2.9103637,RE-INSPECT,LOW,unspecified anomaly,0.0,none,0.5017592,82,9,58
+golden/color/009.png,OK,,1,1,OK,,3.1232,RE-INSPECT,MEDIUM,contamination or colour fault,0.036621094,upper-right,0.5956335,125,9,55
+testcases/F1_empty/frame.png,NO_ITEMS,place items,0,,,,,,,,,,,29,,
+testcases/F2_blur/frame.png,BAD_IMAGE,blur,0,,,,,,,,,,,30,,
+testcases/F3_exposure/bright.png,BAD_IMAGE,bright,0,,,,,,,,,,,7,,
+testcases/F3_exposure/dark.png,BAD_IMAGE,dark,0,,,,,,,,,,,14,,
+testcases/F4_glare/frame.png,BAD_IMAGE,glare,0,,,,,,,,,,,5,,
+testcases/I10_near_threshold/band_0.png,OK,,1,1,OK,,3.0923638,RE-INSPECT,MEDIUM,contamination or colour fault,0.025939941,upper-right,0.582297,147,5,57
+testcases/I10_near_threshold/band_1.png,OK,,1,1,OK,,3.6350985,REJECT,LOW,unspecified anomaly,0.7217407,top,0.60715747,153,6,64
+testcases/I10_near_threshold/band_2.png,OK,,1,1,OK,,3.1241007,RE-INSPECT,LOW,unspecified anomaly,0.14953613,centre,0.59602106,145,4,71
+testcases/I10_near_threshold/band_3.png,OK,,1,1,OK,,3.2004256,RE-INSPECT,LOW,unspecified anomaly,0.34484863,top,0.5844906,126,5,53
+testcases/I1_good/frame.png,OK,,1,1,OK,,2.422562,PASS,,none,0.0,none,0.70360035,78,4,52
+testcases/I2_defect/frame.png,OK,,1,1,OK,,7.7823005,REJECT,HIGH,deformation,3.4713745,right,0.99960846,124,5,53
+testcases/I3_trays/tray2x2.png,OK,,4,1,OK,,4.1952763,REJECT,HIGH,deformation,3.2806396,centre,0.8078701,382,5,53
+testcases/I3_trays/tray2x2.png,OK,,4,2,OK,,2.7316318,PASS,,none,0.0,none,0.5774459,382,5,51
+testcases/I3_trays/tray2x2.png,OK,,4,3,OK,,5.11291,REJECT,MEDIUM,unspecified anomaly,0.9765625,right,0.9558806,382,5,51
+testcases/I3_trays/tray2x2.png,OK,,4,4,OK,,4.3980002,REJECT,MEDIUM,unspecified anomaly,1.298523,right,0.85795766,382,5,52
+testcases/I3_trays/tray3x3.png,OK,,9,1,OK,,9.482804,REJECT,HIGH,contamination or colour fault,5.2490234,bottom,0.9999812,865,5,53
+testcases/I3_trays/tray3x3.png,OK,,9,2,OK,,2.6667392,PASS,,none,0.0,none,0.605453,865,5,52
+testcases/I3_trays/tray3x3.png,OK,,9,3,OK,,3.1290915,RE-INSPECT,LOW,unspecified anomaly,0.2532959,centre,0.5981662,865,5,50
+testcases/I3_trays/tray3x3.png,OK,,9,4,OK,,3.233653,RE-INSPECT,MEDIUM,crack or scratch,0.680542,left,0.57000446,865,4,51
+testcases/I3_trays/tray3x3.png,OK,,9,5,OK,,6.287171,REJECT,HIGH,contamination or colour fault,4.4906616,upper-right,0.99436855,865,5,51
+testcases/I3_trays/tray3x3.png,OK,,9,6,OK,,3.3513098,RE-INSPECT,LOW,unspecified anomaly,0.28076172,centre,0.51790637,865,5,52
+testcases/I3_trays/tray3x3.png,OK,,9,7,OK,,3.6843626,REJECT,LOW,unspecified anomaly,0.56762695,top,0.62794197,865,5,52
+testcases/I3_trays/tray3x3.png,OK,,9,8,OK,,3.4247725,REJECT,MEDIUM,contamination or colour fault,0.14343262,lower-right,0.5148949,865,5,51
+testcases/I3_trays/tray3x3.png,OK,,9,9,OK,,7.543266,REJECT,HIGH,deformation,26.72882,centre,0.9994,865,5,51
+testcases/I4_touching/frame.png,OK,,1,1,CLUSTER,area 1.98x reference,,,,,,,,23,,
+testcases/I5_partial/frame.png,OK,,2,1,OK,,2.552066,PASS,,none,0.0,none,0.6531969,83,5,54
+testcases/I5_partial/frame.png,OK,,2,2,PARTIAL,touches frame edge,,,,,,,,83,,
+testcases/I6_foreign/frame.png,OK,,3,1,OK,,2.783706,PASS,,none,0.0,none,0.554596,81,5,53
+testcases/I6_foreign/frame.png,OK,,3,2,UNKNOWN_OBJECT,area 0.33x reference,,,,,,,,81,,
+testcases/I6_foreign/frame.png,OK,,3,3,UNKNOWN_OBJECT,colour distance 146,,,,,,,,81,,
+testcases/I6b_dark_foreign/frame.png,OK,,1,1,OK,,2.783706,PASS,,none,0.0,none,0.554596,81,4,52
+testcases/I7_too_many/frame.png,OK,,16,1,OK,,2.3614929,PASS,,none,0.0,none,0.72583884,760,7,51
+testcases/I7_too_many/frame.png,OK,,16,2,OK,,2.6293695,PASS,,none,0.0,none,0.62128496,760,6,52
+testcases/I7_too_many/frame.png,OK,,16,3,OK,,2.493115,PASS,,none,0.0,none,0.6766562,760,6,51
+testcases/I7_too_many/frame.png,OK,,16,4,OK,,2.647482,PASS,,none,0.0,none,0.61364144,760,6,51
+testcases/I7_too_many/frame.png,OK,,16,5,OK,,2.5445411,PASS,,none,0.0,none,0.6562362,760,6,52
+testcases/I7_too_many/frame.png,OK,,16,6,OK,,2.553001,PASS,,none,0.0,none,0.6528184,760,7,50
+testcases/I7_too_many/frame.png,OK,,16,7,OK,,2.6580868,PASS,,none,0.0,none,0.60913974,760,7,51
+testcases/I7_too_many/frame.png,OK,,16,8,OK,,2.6999795,PASS,,none,0.0,none,0.5911809,760,7,56
+testcases/I7_too_many/frame.png,OK,,16,9,OK,,2.7092655,PASS,,none,0.0,none,0.5871652,760,8,51
+testcases/I7_too_many/frame.png,OK,,16,10,OK,,2.7306228,PASS,,none,0.0,none,0.57788575,760,9,51
+testcases/I7_too_many/frame.png,OK,,16,11,OK,,2.7865503,PASS,,none,0.0,none,0.5533404,760,9,51
+testcases/I7_too_many/frame.png,OK,,16,12,OK,,2.77466,PASS,,none,0.0,none,0.5585847,760,8,52
+testcases/I7_too_many/frame.png,OK,,16,13,TOO_MANY,more than 12 items,,,,,,,,760,,
+testcases/I7_too_many/frame.png,OK,,16,14,TOO_MANY,more than 12 items,,,,,,,,760,,
+testcases/I7_too_many/frame.png,OK,,16,15,TOO_MANY,more than 12 items,,,,,,,,760,,
+testcases/I7_too_many/frame.png,OK,,16,16,TOO_MANY,more than 12 items,,,,,,,,760,,
+testcases/I8_wrong_product/frame.png,OK,,1,1,CLUSTER,area 2.00x reference,,,,,,,,23,,
+testcases/I9_mixed_cluster/frame.png,OK,,4,1,OK,,2.7741146,PASS,,none,0.0,none,0.558825,196,4,53
+testcases/I9_mixed_cluster/frame.png,OK,,4,2,OK,,2.672239,PASS,,none,0.0,none,0.6031033,196,5,51
+testcases/I9_mixed_cluster/frame.png,OK,,4,3,OK,,2.7220283,PASS,,none,0.0,none,0.58162695,196,5,50
+testcases/I9_mixed_cluster/frame.png,OK,,4,4,CLUSTER,area 1.98x reference,,,,,,,,196,,

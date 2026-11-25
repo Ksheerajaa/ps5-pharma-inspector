@@ -1,0 +1,347 @@
+# device=Nothing A059; android=17 (API 37); ram_mb=7428; battery_pct=100; battery_temp_c=36.0; thermal_status=1; airplane=false; ts=20261122_223036; llm=llama3.2-1b-instruct 8da4w xnnpack; et=1.5.1; load_ms=2275; pss_before_mb=323; pss_loaded_mb=1152
+case,verdict,defect_type,severity,ttft_ms,tokens,total_ms,decode_tok_s,pss_mb,valid,reason,raw,handoff_json
+1,RE-INSPECT,crack or scratch,MEDIUM,1265,81,6012,16.85,1193,true,,"ACTION: Re-inspect pill 4 due to crack or scratch defect
+REASON: The verdict is already decided by the inspection system, so no further action is needed
+CHECK: The punch and die wear and tablet hardness inspection are required to verify the defect
+LOG: The SOP_hint ""Check punch and die wear and tablet hardness"" is followed, indicating that the inspection process is being followed.","{""product"":""pill"",""item"":4,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":91,""area_pct"":2.2,""location"":""upper-left"",""box"":null,""recent_rejects_last_20"":2}"
+2,REJECT,crack or scratch,MEDIUM,1051,136,8842,17.33,1195,false,"expected 4 lines, got 8","ACTION: Reject the product
+REASON: The product has a crack or scratch defect, medium severity, and a low area percentage, which is a significant concern
+CHECK: Punch and die wear and tablet hardness
+LOG: Recent rejects last 20 are 3, which is a significant number and indicates a potential issue with the product
+
+ACTION: Reject the product
+REASON: The product has a crack or scratch defect, medium severity, and a low area percentage, which is a significant concern
+CHECK: Punch and die wear and tablet hardness
+LOG: Recent rejects last 20 are 3, which is a significant number and indicates a potential issue with the product","{""product"":""pill"",""item"":9,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":75,""area_pct"":3.5,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":3}"
+3,RE-INSPECT,unspecified anomaly,LOW,1053,65,4585,18.12,1052,false,ACTION does not match verdict RE-INSPECT,"ACTION: Review the inspection record
+REASON: The verdict is already decided by the inspection system, so no further action is needed.
+CHECK: The inspection record does not provide any additional information or context.
+LOG: The SOP_hint ""Inspect the marked area manually and record what you see"" is relevant to this action.","{""product"":""pill"",""item"":9,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":66,""area_pct"":3.3,""location"":""left"",""box"":null,""recent_rejects_last_20"":3}"
+4,REJECT,crack or scratch,LOW,1173,38,3528,15.71,1052,true,,"ACTION: Reject the product
+REASON: The tablet has a crack or scratch defect
+CHECK: Punch and die wear and tablet hardness
+LOG: The inspection record has been logged.","{""product"":""pill"",""item"":9,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""LOW"",""confidence_pct"":73,""area_pct"":3,""location"":""right"",""box"":null,""recent_rejects_last_20"":1}"
+5,RE-INSPECT,unspecified anomaly,LOW,1028,77,5226,18.10,1053,false,ACTION does not match verdict RE-INSPECT,"ACTION: Review the marked area manually.
+REASON: The defect type is unspecified and the severity is low, so further inspection is not required.
+CHECK: The area with the pill is marked as bottom, but the SOP does not specify the exact location.
+LOG: The record indicates that there are no recent rejects within the last 20 units, so no further action is needed.","{""product"":""pill"",""item"":7,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":94,""area_pct"":1.7,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":3}"
+6,REJECT,crack or scratch,MEDIUM,1027,70,4851,18.04,1053,true,,"ACTION: Reject the product
+REASON: The tablet was rejected due to a crack or scratch defect, which is considered a medium severity issue
+CHECK: The punch and die wear and tablet hardness inspection were performed, but the results are not provided
+LOG: The SOP was followed, and the inspection was conducted according to the standard operating procedure.","{""product"":""pill"",""item"":3,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":76,""area_pct"":1.9,""location"":""centre"",""box"":null,""recent_rejects_last_20"":3}"
+7,RE-INSPECT,crack or scratch,LOW,1028,80,5405,18.05,1054,true,,"ACTION: Re-inspect pill 5 due to defect type and severity.
+REASON: The defect type ""crack or scratch"" and severity ""LOW"" indicate a need for re-inspection.
+CHECK: The punch and die wear and tablet hardness inspection are required to verify the defect.
+LOG: The SOP is followed, and the re-inspection is scheduled for the next batch of pills.","{""product"":""pill"",""item"":5,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""LOW"",""confidence_pct"":59,""area_pct"":2.7,""location"":""top"",""box"":null,""recent_rejects_last_20"":2}"
+8,REJECT,unspecified anomaly,LOW,1021,48,3655,17.84,1054,true,,"ACTION: Reject the pill inspection
+REASON: The pill was rejected due to an unspecified anomaly
+CHECK: The inspection was performed manually and the marked area was inspected
+LOG: The inspection record was created and the SOP was followed.","{""product"":""pill"",""item"":7,""verdict"":""REJECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":86,""area_pct"":0.9,""location"":""top"",""box"":null,""recent_rejects_last_20"":5}"
+9,RE-INSPECT,deformation,MEDIUM,1020,68,5002,16.83,1055,true,,"ACTION: Re-inspect pill 4 due to deformation
+REASON: Deformation of pill 4 is likely due to compression force and tooling alignment issues
+CHECK: Check compression force to ensure it is within acceptable limits
+LOG: Log compression force to be checked against tooling alignment to determine if it is within acceptable limits.","{""product"":""pill"",""item"":4,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""MEDIUM"",""confidence_pct"":70,""area_pct"":3.2,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":0}"
+10,REJECT,crack or scratch,MEDIUM,1042,78,5424,17.57,1056,true,,"ACTION: Reject the pill due to crack or scratch defect
+REASON: The defect was not detected during the inspection of the neighbouring tablets, which are not on the production line
+CHECK: The punch and die wear was not checked, and the tablet hardness was not measured
+LOG: The SOP was followed, and the decision to reject the pill was made based on the inspection results.","{""product"":""pill"",""item"":1,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":72,""area_pct"":3.6,""location"":""right"",""box"":null,""recent_rejects_last_20"":2}"
+11,RE-INSPECT,unspecified anomaly,LOW,1032,73,5131,17.57,1056,false,LOG exceeds 20 words,"ACTION: Review the marked area manually.
+REASON: The verdict is already decided by the inspection system, so no further action is required.
+CHECK: The inspection record is incomplete and does not provide enough information to make a decision.
+LOG: The inspection record is part of the quality control process, but it does not impact the production line's quality control procedures.","{""product"":""pill"",""item"":3,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":84,""area_pct"":2.8,""location"":""top"",""box"":null,""recent_rejects_last_20"":2}"
+12,REJECT,contamination or colour fault,HIGH,1055,75,5162,18.02,1057,true,,"ACTION: Reject the product
+REASON: The product was rejected due to contamination or colour fault, which is a high severity defect
+CHECK: The product was inspected and found to have foreign particles, lubricant spots, and blend uniformity issues
+LOG: The inspection record has been logged, and the decision to reject the product has been made according to the SOP.","{""product"":""pill"",""item"":8,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""HIGH"",""confidence_pct"":95,""area_pct"":1,""location"":""lower-left"",""box"":null,""recent_rejects_last_20"":1}"
+13,RE-INSPECT,unspecified anomaly,LOW,1044,61,4393,17.92,1058,false,invented number 90,"ACTION: Re-inspect the marked area manually
+REASON: The defect type is unspecified and the severity is low
+CHECK: The area with the pill is 90% of the total area
+LOG: The SOP is followed, but the defect is not severe enough to warrant re-inspection.","{""product"":""pill"",""item"":9,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":63,""area_pct"":0.9,""location"":""top"",""box"":null,""recent_rejects_last_20"":4}"
+14,REJECT,crack or scratch,MEDIUM,1053,63,4505,17.96,1058,true,,"ACTION: Reject the product
+REASON: The product has a defect type of crack or scratch and severity of medium, which meets the SOP.
+CHECK: Punch and die wear and tablet hardness to verify the inspection
+LOG: The SOP has been followed, and the inspection has been conducted as per the SOP.","{""product"":""pill"",""item"":9,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":67,""area_pct"":0.7,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":4}"
+15,RE-INSPECT,unspecified anomaly,MEDIUM,1057,67,5000,16.74,1054,false,invented number 0.5,"ACTION: Re-inspect the marked area manually.
+REASON: The defect type is unspecified anomaly and the severity is medium.
+CHECK: The area pct is 0.2, which is less than the recommended 0.5.
+LOG: The SOP_hint is to inspect the marked area manually, which is not being done.","{""product"":""pill"",""item"":9,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""MEDIUM"",""confidence_pct"":53,""area_pct"":0.2,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":0}"
+16,REJECT,contamination or colour fault,LOW,1054,51,3890,17.63,1055,true,,"ACTION: Reject the product
+REASON: The product was rejected due to contamination or colour fault
+CHECK: The product was inspected for foreign particles, lubricant spots, and blend uniformity
+LOG: The inspection record is logged for future reference.","{""product"":""pill"",""item"":4,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""LOW"",""confidence_pct"":74,""area_pct"":0.9,""location"":""upper-left"",""box"":null,""recent_rejects_last_20"":5}"
+17,RE-INSPECT,crack or scratch,LOW,1079,68,4850,17.77,1055,true,,"ACTION: Re-inspect pill item
+REASON: Defect type is crack or scratch, severity is low, and area pct is 1.2, which is below the SOP hint
+CHECK: Punch and die wear and tablet hardness
+LOG: Recent rejects last 20 are 0, which is within the SOP hint.","{""product"":""pill"",""item"":7,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""LOW"",""confidence_pct"":64,""area_pct"":1.2,""location"":""centre"",""box"":null,""recent_rejects_last_20"":0}"
+18,REJECT,deformation,LOW,1008,105,6820,17.89,1055,false,REASON exceeds 20 words,"ACTION: Reject the pill inspection due to deformation.
+REASON: The defect type is deformation, which is a low severity issue, and the area percentage is 2.8, indicating a potential compression issue.
+CHECK: The compression force of the pill is 2.5, which is within the acceptable range of 2.0 to 3.0, but the tooling alignment is not checked.
+LOG: The SOP is followed, and the decision to reject the pill inspection is based on the inspection record.","{""product"":""pill"",""item"":5,""verdict"":""REJECT"",""defect_type"":""deformation"",""severity"":""LOW"",""confidence_pct"":87,""area_pct"":2.8,""location"":""left"",""box"":null,""recent_rejects_last_20"":3}"
+19,RE-INSPECT,crack or scratch,MEDIUM,1055,61,4391,17.99,1055,true,,"ACTION: Re-inspect pill tablet
+REASON: Defect type is crack or scratch, severity is medium, and area pct is 1.2
+CHECK: Punch and die wear and tablet hardness
+LOG: Recent rejects last 20 were 3, so re-inspection is necessary.","{""product"":""pill"",""item"":8,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":64,""area_pct"":1.2,""location"":""right"",""box"":null,""recent_rejects_last_20"":3}"
+20,REJECT,crack or scratch,LOW,1053,215,13484,17.22,1055,false,"expected 4 lines, got 20","ACTION: Reject the product
+REASON: The tablet has a crack or scratch defect
+CHECK: Punch and die wear and tablet hardness
+LOG: The SOP has been followed, but the defect is still low
+
+ACTION: Reject the product
+REASON: The tablet has a crack or scratch defect
+CHECK: Punch and die wear and tablet hardness
+LOG: The SOP has been followed, but the defect is still low
+
+ACTION: Reject the product
+REASON: The tablet has a crack or scratch defect
+CHECK: Punch and die wear and tablet hardness
+LOG: The SOP has been followed, but the defect is still low
+
+ACTION: Reject the product
+REASON: The tablet has a crack or scratch defect
+CHECK: Punch and die wear and tablet hardness
+LOG: The SOP has been followed, but the defect is still low
+
+ACTION: Reject the product
+REASON: The tablet has a crack or scratch defect
+CHECK: Punch and die wear and tablet hardness
+LOG: The SOP has been followed, but the defect is still low","{""product"":""pill"",""item"":4,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""LOW"",""confidence_pct"":90,""area_pct"":2.7,""location"":""top"",""box"":null,""recent_rejects_last_20"":1}"
+21,RE-INSPECT,deformation,MEDIUM,1060,64,4631,17.64,1056,false,invented number 10,"ACTION: Re-inspect pill to verify deformation
+REASON: The pill inspection record indicates deformation, which is a medium severity defect
+CHECK: Compression force should be within 10% of expected value
+LOG: Recent rejects last 20 are 1, which is within the specified confidence level of 70%","{""product"":""pill"",""item"":1,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""MEDIUM"",""confidence_pct"":70,""area_pct"":0.2,""location"":""upper-left"",""box"":null,""recent_rejects_last_20"":1}"
+22,REJECT,deformation,MEDIUM,1036,61,4442,17.62,1056,true,,"ACTION: Reject the pill due to deformation.
+REASON: The pill was rejected due to deformation, which is a medium severity defect.
+CHECK: Check the compression force of the pill to ensure it met the SOP.
+LOG: The SOP for tablet inspection is to check compression force and tooling alignment.","{""product"":""pill"",""item"":7,""verdict"":""REJECT"",""defect_type"":""deformation"",""severity"":""MEDIUM"",""confidence_pct"":76,""area_pct"":0.7,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":5}"
+23,RE-INSPECT,crack or scratch,MEDIUM,1098,93,6201,18.03,1056,false,LOG exceeds 20 words,"ACTION: Re-inspect pill 5 due to defect type and severity.
+REASON: The defect type ""crack or scratch"" and severity ""MEDIUM"" indicate a potential issue with the tablet's integrity.
+CHECK: The punch and die wear and tablet hardness inspection should be performed to verify the tablet's integrity.
+LOG: The SOP_hint ""Check punch and die wear and tablet hardness"" is to be followed to ensure the quality of the inspected tablets.","{""product"":""pill"",""item"":5,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":71,""area_pct"":1,""location"":""upper-right"",""box"":null,""recent_rejects_last_20"":2}"
+24,REJECT,contamination or colour fault,MEDIUM,1116,73,5173,17.75,1055,true,,"ACTION: Reject the product due to contamination or colour fault.
+REASON: The product was rejected due to contamination or colour fault, which is a medium severity defect.
+CHECK: The product was inspected for foreign particles, lubricant spots, and blend uniformity.
+LOG: The inspection record is logged as it is, with the SOP hint provided for future reference.","{""product"":""pill"",""item"":6,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""MEDIUM"",""confidence_pct"":77,""area_pct"":3.4,""location"":""upper-left"",""box"":null,""recent_rejects_last_20"":1}"
+25,RE-INSPECT,deformation,LOW,1010,102,6634,17.96,1055,false,"expected 4 lines, got 5","ACTION: Re-inspect pill item 6 due to deformation defect
+REASON: The SOP_hint ""Check compression force and tooling alignment"" indicates a need to verify the compression force and tooling alignment of the pill item 6.
+CHECK: Verify compression force of pill item 6 using the compression test procedure.
+CHECK: Check tooling alignment of the pill item 6 using the tooling alignment test procedure.
+LOG: Log the re-inspection of pill item 6 due to deformation defect.","{""product"":""pill"",""item"":6,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""LOW"",""confidence_pct"":67,""area_pct"":1.4,""location"":""top"",""box"":null,""recent_rejects_last_20"":1}"
+26,REJECT,crack or scratch,LOW,1057,53,3959,17.92,1055,true,,"ACTION: Reject pill due to crack or scratch defect
+REASON: The defect type is crack or scratch, which is a low severity issue
+CHECK: Punch and die wear and tablet hardness inspection
+LOG: The SOP is to inspect neighbouring tablets to ensure consistency","{""product"":""pill"",""item"":2,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""LOW"",""confidence_pct"":84,""area_pct"":3.7,""location"":""upper-right"",""box"":null,""recent_rejects_last_20"":1}"
+27,RE-INSPECT,crack or scratch,MEDIUM,1081,61,4420,17.97,1056,true,,"ACTION: Re-inspect pill tablet
+REASON: Defect type is crack or scratch, severity is medium, and area pct is 1.7
+CHECK: Punch and die wear and tablet hardness
+LOG: Recent rejects last 20 are 4, so re-inspection is required.","{""product"":""pill"",""item"":2,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":56,""area_pct"":1.7,""location"":""upper-left"",""box"":null,""recent_rejects_last_20"":4}"
+28,REJECT,crack or scratch,MEDIUM,1046,590,37712,16.06,1052,false,"expected 4 lines, got 40","ACTION: Reject pill due to crack or scratch defect
+REASON: The defect type is crack or scratch, which is a medium severity issue
+CHECK: Punch and die wear and tablet hardness inspection is required
+LOG: Recent rejects last 20 are 4, which is a medium severity issue
+LOG: SOP suggests inspecting neighbouring tablets to check for defects
+LOG: Rejecting the pill due to the crack or scratch defect is the correct action
+LOG: The defect type and severity are sufficient to reject the pill
+LOG: The SOP is followed to ensure the quality of the product
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related to punch and die wear or tablet hardness
+LOG: The pill is rejected due to the crack or scratch defect
+LOG: The defect is not related","{""product"":""pill"",""item"":2,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":97,""area_pct"":3.8,""location"":""left"",""box"":null,""recent_rejects_last_20"":4}"
+29,RE-INSPECT,deformation,LOW,1055,100,6627,17.77,1052,false,CHECK exceeds 20 words,"ACTION: Re-inspect pill item 6 due to deformation defect with low severity and 32% area pct.
+REASON: The SOP suggests checking compression force and tooling alignment, which is not mentioned in the record.
+CHECK: The compression force of the pill item 6 should be checked against the standard, and the tooling alignment should be verified.
+LOG: The record indicates that the pill item 6 has been rejected due to a deformation defect, which is a low severity issue.","{""product"":""pill"",""item"":6,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""LOW"",""confidence_pct"":67,""area_pct"":3.2,""location"":""lower-left"",""box"":null,""recent_rejects_last_20"":0}"
+30,REJECT,unspecified anomaly,HIGH,1043,52,3898,17.86,1053,true,,"ACTION: Reject the pill inspection
+REASON: The pill inspection was rejected due to the unspecified anomaly defect type
+CHECK: The defect type is not specified, so the inspection cannot be completed
+LOG: The inspection record is complete and ready for review.","{""product"":""pill"",""item"":5,""verdict"":""REJECT"",""defect_type"":""unspecified anomaly"",""severity"":""HIGH"",""confidence_pct"":60,""area_pct"":1.4,""location"":""right"",""box"":null,""recent_rejects_last_20"":5}"
+31,RE-INSPECT,deformation,MEDIUM,1033,54,4002,17.85,1053,false,invented number 50,"ACTION: Re-inspect pill 4 due to deformation
+REASON: Deformation is a medium severity defect
+CHECK: Compression force is 50% of recommended
+LOG: Recent rejects are 5 out of 20, which is less than SOP_hint.","{""product"":""pill"",""item"":4,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""MEDIUM"",""confidence_pct"":79,""area_pct"":4,""location"":""left"",""box"":null,""recent_rejects_last_20"":5}"
+32,REJECT,contamination or colour fault,HIGH,1050,52,3891,17.95,1053,true,,"ACTION: Reject the product
+REASON: The product was rejected due to contamination or colour fault
+CHECK: Foreign particles were not found, but lubricant spots were detected
+LOG: The SOP was followed, but the product was rejected due to defects.","{""product"":""pill"",""item"":6,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""HIGH"",""confidence_pct"":96,""area_pct"":2.6,""location"":""upper-right"",""box"":null,""recent_rejects_last_20"":2}"
+33,RE-INSPECT,unspecified anomaly,LOW,1054,63,4500,17.99,1054,true,,"ACTION: Re-inspect the marked area manually
+REASON: The defect type is unspecified and the severity is low
+CHECK: The area with the defect is 1.3% of the total area
+LOG: The SOP_hint ""Inspect the marked area manually and record what you see"" is followed.","{""product"":""pill"",""item"":3,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":85,""area_pct"":1.3,""location"":""left"",""box"":null,""recent_rejects_last_20"":1}"
+34,REJECT,unspecified anomaly,LOW,1026,80,5422,17.97,1053,false,CHECK exceeds 20 words,"ACTION: Reject the pill inspection
+REASON: The pill inspection was rejected due to an unspecified anomaly, which is a low severity defect.
+CHECK: The SOP is clear, but the inspection record does not provide enough information to determine the exact nature of the anomaly.
+LOG: The inspection record is complete, but it does not provide any useful information to support the decision to reject the pill inspection.","{""product"":""pill"",""item"":1,""verdict"":""REJECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":86,""area_pct"":3.5,""location"":""lower-right"",""box"":null,""recent_rejects_last_20"":2}"
+35,RE-INSPECT,contamination or colour fault,LOW,1077,83,5633,18.00,1054,true,,"ACTION: Re-inspect pill 9 due to low severity and low area pct.
+REASON: The SOP_hint indicates foreign particles, lubricant spots, and blend uniformity as defects.
+CHECK: Check the pill 9 for foreign particles, lubricant spots, and blend uniformity before re-inspection.
+LOG: Log the re-inspection of pill 9 due to low severity and low area pct.","{""product"":""pill"",""item"":9,""verdict"":""RE-INSPECT"",""defect_type"":""contamination or colour fault"",""severity"":""LOW"",""confidence_pct"":50,""area_pct"":3.1,""location"":""lower-left"",""box"":null,""recent_rejects_last_20"":5}"
+36,REJECT,unspecified anomaly,LOW,1042,65,4626,17.86,1054,true,,"ACTION: Reject the pill inspection
+REASON: The pill inspection was rejected due to an unspecified anomaly, which is not specified in the SOP.
+CHECK: The SOP does not provide any guidance on how to inspect the marked area manually.
+LOG: The inspection record is being logged as it is, with the specified information.","{""product"":""pill"",""item"":4,""verdict"":""REJECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":51,""area_pct"":1.9,""location"":""centre"",""box"":null,""recent_rejects_last_20"":0}"
+37,RE-INSPECT,unspecified anomaly,MEDIUM,1051,80,5440,18.00,1054,false,LOG exceeds 20 words,"ACTION: Re-inspect the marked area manually.
+REASON: The defect type is unspecified and the severity is medium, which suggests a need for further investigation.
+CHECK: The SOP states that the marked area should be inspected manually, which is not being done.
+LOG: The record indicates that there are no recent rejects in the last 20 units, which is not relevant to the current inspection.","{""product"":""pill"",""item"":3,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""MEDIUM"",""confidence_pct"":52,""area_pct"":1.9,""location"":""lower-right"",""box"":null,""recent_rejects_last_20"":0}"
+38,REJECT,crack or scratch,MEDIUM,1048,65,4614,17.95,1055,false,"expected 4 lines, got 5","ACTION: Reject pill due to crack or scratch defect
+REASON: Crack or scratch defect detected, severity medium
+CHECK: Punch and die wear and tablet hardness inspected
+LOG: Recent rejects last 20 tablets were 4, so action is likely correct
+LOG: SOP is followed, so no further action is required","{""product"":""pill"",""item"":2,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":82,""area_pct"":0.1,""location"":""right"",""box"":null,""recent_rejects_last_20"":4}"
+39,RE-INSPECT,deformation,MEDIUM,1038,57,4227,17.56,1055,false,invented number 10,"ACTION: Re-inspect pill tablet
+REASON: Defect type is deformation, which is a medium severity defect
+CHECK: Compression force is not within SOP range (0-10N)
+LOG: No recent rejects within last 20 units, so no action is taken.","{""product"":""pill"",""item"":8,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""MEDIUM"",""confidence_pct"":74,""area_pct"":3.5,""location"":""upper-left"",""box"":null,""recent_rejects_last_20"":0}"
+40,REJECT,contamination or colour fault,HIGH,1048,77,5277,17.97,1055,true,,"ACTION: Reject the product due to contamination or colour fault
+REASON: The product was rejected due to contamination or colour fault, which is a high severity issue
+CHECK: The product was inspected and found to have foreign particles, lubricant spots, and blend uniformity issues
+LOG: The inspection record is logged as it is, with the SOP hint provided for future reference.","{""product"":""pill"",""item"":8,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""HIGH"",""confidence_pct"":82,""area_pct"":2.9,""location"":""right"",""box"":null,""recent_rejects_last_20"":1}"
+41,RE-INSPECT,crack or scratch,LOW,1055,88,6302,16.58,1056,false,LOG exceeds 20 words,"ACTION: Re-inspect pill 5 due to crack or scratch defect
+REASON: The defect verdict was already decided by the inspection system, so no further action is needed.
+CHECK: The punch and die wear and tablet hardness inspection was performed on neighbouring tablets, but not on the current one.
+LOG: The SOP is clear on inspecting neighbouring tablets to verify the inspection of the current tablet, so this step is not necessary.","{""product"":""pill"",""item"":5,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""LOW"",""confidence_pct"":90,""area_pct"":0.6,""location"":""right"",""box"":null,""recent_rejects_last_20"":3}"
+42,REJECT,crack or scratch,HIGH,1123,89,6110,17.65,1055,false,"expected 4 lines, got 5","ACTION: Reject the product
+REASON: The product has a crack or scratch defect, which is a high severity issue
+CHECK: The punch and die wear and tablet hardness inspection was performed
+LOG: The SOP was followed, and the punch and die wear and tablet hardness inspection was conducted on the neighbouring tablets.
+
+Note: The SOP is followed, but the punch and die wear and tablet hardness inspection was not performed on the neighbouring tablets.","{""product"":""pill"",""item"":3,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""HIGH"",""confidence_pct"":89,""area_pct"":3.6,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":2}"
+43,RE-INSPECT,deformation,MEDIUM,1040,126,8143,17.60,1055,false,"expected 4 lines, got 8","ACTION: Re-inspect pill tablet.
+REASON: Defect type is deformation, which is a medium severity defect.
+CHECK: Compression force is not within SOP limits (3-5 kN).
+LOG: Recent rejects are within SOP limits (5-10% of total rejects).
+
+ACTION: Check tooling alignment.
+REASON: Tooling alignment is not within SOP limits (90% of tablets have tooling alignment).
+CHECK: Tooling alignment is not within SOP limits (90% of tablets have tooling alignment).
+LOG: Tooling alignment is not within SOP limits (90% of tablets have tooling alignment).","{""product"":""pill"",""item"":3,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""MEDIUM"",""confidence_pct"":76,""area_pct"":0.3,""location"":""left"",""box"":null,""recent_rejects_last_20"":5}"
+44,REJECT,crack or scratch,MEDIUM,1054,589,36932,16.39,1056,false,"expected 4 lines, got 63","ACTION: Reject pill due to crack or scratch defect
+REASON: Crack or scratch defect was found in upper-left area
+CHECK: Punch and die wear was not inspected
+LOG: Recent rejects last 20 were 5, which is below SOP hint
+LOG: SOP hint is to inspect neighbouring tablets
+LOG: Defect severity is medium, which is below medium severity
+LOG: Area percentage is 3.5, which is below medium area percentage
+LOG: Confidence percentage is 93, which is below medium confidence percentage
+LOG: Rejects are not being reviewed or revised
+LOG: Review and revision process is not being followed
+LOG: SOP is not being followed
+LOG: Inspection record is not being updated
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+LOG: Review process is not being followed
+LOG: Review process is not being followed
+LOG: SOP is not being followed
+","{""product"":""pill"",""item"":2,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":93,""area_pct"":3.5,""location"":""upper-left"",""box"":null,""recent_rejects_last_20"":5}"
+45,RE-INSPECT,contamination or colour fault,MEDIUM,1081,64,4583,17.99,1057,true,,"ACTION: Re-inspect pill according to SOP
+REASON: Defect verdict is RE-INSPECT, not re-inspection of pill
+CHECK: Check for foreign particles, lubricant spots, and blend uniformity
+LOG: Log the inspection result as RE-INSPECT, pending re-inspection of pill","{""product"":""pill"",""item"":6,""verdict"":""RE-INSPECT"",""defect_type"":""contamination or colour fault"",""severity"":""MEDIUM"",""confidence_pct"":58,""area_pct"":3.9,""location"":""left"",""box"":null,""recent_rejects_last_20"":3}"
+46,REJECT,crack or scratch,MEDIUM,1049,53,3952,17.91,1057,true,,"ACTION: Reject pill due to crack/scratch defect
+REASON: Crack/scratch defect on upper-left tablet
+CHECK: Punch and die wear and tablet hardness
+LOG: Recent rejects last 20 are 5, so this is not a repeat issue.","{""product"":""pill"",""item"":1,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":58,""area_pct"":4,""location"":""upper-left"",""box"":null,""recent_rejects_last_20"":5}"
+47,RE-INSPECT,deformation,LOW,1013,43,3381,17.74,1057,true,,"ACTION: Re-inspect pill under SOP
+REASON: Defect type is deformation, which is a low severity issue
+CHECK: Compression force is not within acceptable range
+LOG: Recent rejects within acceptable limit","{""product"":""pill"",""item"":8,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""LOW"",""confidence_pct"":97,""area_pct"":2.6,""location"":""right"",""box"":null,""recent_rejects_last_20"":2}"
+48,REJECT,contamination or colour fault,LOW,1053,82,5558,17.98,1058,false,REASON exceeds 20 words,"ACTION: Reject the pill due to contamination or colour fault
+REASON: The pill was rejected because it was found to be contaminated or have a colour fault, which is a low severity defect
+CHECK: The pill was inspected for foreign particles, lubricant spots, and blend uniformity before being rejected
+LOG: The inspection record has been logged, and the decision to reject the pill has been made.","{""product"":""pill"",""item"":2,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""LOW"",""confidence_pct"":57,""area_pct"":0.2,""location"":""upper-right"",""box"":null,""recent_rejects_last_20"":2}"
+49,RE-INSPECT,deformation,MEDIUM,1039,52,3899,17.83,1058,true,,"ACTION: Re-inspect pill 3 due to deformation
+REASON: Deformation is a medium severity defect
+CHECK: Compression force is not within SOP range
+LOG: Recent rejects within 20 units are 4, not relevant to this defect.","{""product"":""pill"",""item"":3,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""MEDIUM"",""confidence_pct"":72,""area_pct"":3.1,""location"":""left"",""box"":null,""recent_rejects_last_20"":4}"
+50,REJECT,deformation,MEDIUM,1014,196,12004,17.74,1059,false,"expected 4 lines, got 16","ACTION: Check compression force
+REASON: Pill pills may be prone to deformation due to improper compression.
+CHECK: Verify compression force is within SOP limits (150-200 kN).
+LOG: Record compression force as 170 kN.
+
+ACTION: Check tooling alignment
+REASON: Pill pills may be more susceptible to deformation if tooling is not aligned properly.
+CHECK: Inspect tooling alignment on all production lines.
+LOG: Record tooling alignment as 90.5% aligned.
+
+ACTION: Review recent rejects
+REASON: Pill pills are not being rejected, which may indicate a problem with the inspection process.
+CHECK: Verify that all recent rejects were properly documented and reviewed.
+LOG: Record recent rejects as 0.
+
+ACTION: Review SOP
+REASON: The inspection SOP is not being followed, which may indicate a problem with the system.
+CHECK: Review the inspection SOP to ensure it is being followed.
+LOG: Record the inspection SOP as incomplete.","{""product"":""pill"",""item"":1,""verdict"":""REJECT"",""defect_type"":""deformation"",""severity"":""MEDIUM"",""confidence_pct"":80,""area_pct"":3.4,""location"":""left"",""box"":null,""recent_rejects_last_20"":0}"

@@ -1,0 +1,19 @@
+{
+ "tray2x2.png": [
+  "test/faulty_imprint/010.png",
+  "test/good/018.png",
+  "test/color/008.png",
+  "test/scratch/000.png"
+ ],
+ "tray3x3.png": [
+  "test/contamination/003.png",
+  "test/crack/024.png",
+  "test/scratch/004.png",
+  "test/scratch/008.png",
+  "test/combined/012.png",
+  "test/faulty_imprint/000.png",
+  "test/contamination/004.png",
+  "test/good/010.png",
+  "test/pill_type/002.png"
+ ]
+}

@@ -1,0 +1,35 @@
+{
+  "source": "replay_20261122_212513_bank4096.csv",
+  "set": "eval (touched once for this configuration)",
+  "operating_point": "flagged = verdict RE-INSPECT or REJECT (score >= t_pass); not-inspected counted as flagged",
+  "n_images": 86,
+  "n_defective": 73,
+  "n_good": 13,
+  "tp": 69,
+  "fp": 3,
+  "fn": 4,
+  "tn": 10,
+  "precision": 0.9583333333333334,
+  "recall": 0.9452054794520548,
+  "f1": 0.9517241379310345,
+  "miss_rate": 0.0547945205479452,
+  "false_alarm_rate": 0.23076923076923078,
+  "image_auroc": 0.9399367755532139,
+  "vision_ms_median": 55.0,
+  "vision_ms_p95": 72.0,
+  "frame_ms_median": 116.0,
+  "frame_ms_p95": 144.0,
+  "not_inspected": [],
+  "verdicts": {
+    "defective": {
+      "REJECT": 57,
+      "RE-INSPECT": 12,
+      "PASS": 4
+    },
+    "good": {
+      "PASS": 10,
+      "RE-INSPECT": 2,
+      "REJECT": 1
+    }
+  }
+}

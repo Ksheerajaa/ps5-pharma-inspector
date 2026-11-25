@@ -1,0 +1,36 @@
+W1122 20:13:40.840839 12600 torch\utils\_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1122 20:13:41.055302 12600 torch\utils\_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1122 20:13:44.083941 12600 torch\utils\flop_counter.py:29] triton not found; flop counting will not work for triton kernels
+I tokenizers:C:\tk\src\regex.cpp:40] Registering override fallback regex
+[2026-11-22 20:13:47,951][root][INFO] - Applying quantizers: []
+[2026-11-22 20:13:48,398][root][INFO] - Checkpoint dtype: torch.bfloat16
+Windows fatal exception: access violation
+
+Current thread 0x00000bf8 (most recent call first):
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\torchao\quantization\quant_primitives.py", line 2056 in round_det
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\torchao\quantization\quant_primitives.py", line 2079 in _choose_qparams_and_quantize_scale_only_hqq
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\torch\utils\_contextlib.py", line 124 in decorate_context
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\torchao\quantization\quantize_\workflows\intx\intx_unpacked_to_int8_tensor.py", line 218 in from_hp
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\torchao\quantization\quant_api.py", line 467 in _int8_dynamic_activation_intx_weight_quantize_tensor
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\torchao\quantization\quant_api.py", line 503 in _int8_dynamic_activation_intx_weight_transform
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\torchao\quantization\quant_api.py", line 148 in _replace_with_custom_fn_if_matches_filter
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\torchao\quantization\quant_api.py", line 153 in _replace_with_custom_fn_if_matches_filter
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\torchao\quantization\quant_api.py", line 337 in quantize_
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\examples\models\llama\source_transformation\quantize.py", line 157 in quantize
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\export\builder.py", line 190 in source_transform
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\examples\models\llama\export_llama_lib.py", line 924 in _prepare_for_llama_export
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\examples\models\llama\export_llama_lib.py", line 1770 in _export_llama
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\examples\models\llama\export_llama_lib.py", line 742 in export_llama
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\export\export_llm.py", line 88 in hydra_main
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\hydra\core\utils.py", line 189 in run_job
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\hydra\_internal\hydra.py", line 119 in run
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\hydra\_internal\utils.py", line 458 in <lambda>
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\hydra\_internal\utils.py", line 220 in run_and_report
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\hydra\_internal\utils.py", line 457 in _run_app
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\hydra\_internal\utils.py", line 394 in _run_hydra
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\hydra\main.py", line 94 in decorated_main
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\export\export_llm.py", line 102 in main
+  File "C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\export\export_llm.py", line 106 in <module>
+  File "C:\Program Files\Python310\lib\runpy.py", line 86 in _run_code
+  File "C:\Program Files\Python310\lib\runpy.py", line 196 in _run_module_as_main
+EXIT -1073741819  elapsed 18.5 min

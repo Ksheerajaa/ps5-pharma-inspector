@@ -1,0 +1,202 @@
+# device=Nothing A059; android=17 (API 37); ram_mb=7428; battery_pct=81; battery_temp_c=37.0; thermal_status=1; airplane=false; ts=20261123_121403; llm=llama3.2-1b-instruct 8da4w xnnpack; et=1.5.1; prompt=v2; seed=2027; load_ms=2404; pss_before_mb=329; pss_loaded_mb=1167
+case,verdict,defect_type,severity,ttft_ms,tokens,total_ms,decode_tok_s,pss_mb,valid,reason,raw,handoff_json
+1,RE-INSPECT,contamination or colour fault,MEDIUM,2317,53,5357,17.11,1059,true,,"ACTION: Re-inspect item 2 and re-check for contamination or colour faults.
+REASON: Medium severity for contamination or colour fault on lower-left.
+CHECK: Check for foreign particles, lubricant spots, and blend uniformity.
+LOG: Item 2 re-inspected and found no issues.","{""product"":""pill"",""item"":2,""verdict"":""RE-INSPECT"",""defect_type"":""contamination or colour fault"",""severity"":""MEDIUM"",""confidence_pct"":82,""area_pct"":4,""location"":""lower-left"",""box"":null,""recent_rejects_last_20"":4}"
+2,REJECT,unspecified anomaly,MEDIUM,2066,46,4639,17.49,1058,true,,"ACTION: Reject item 2 due to an unspecified anomaly.
+REASON: Medium severity for an unspecified anomaly on the right side.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 2 rejected for an unspecified anomaly.","{""product"":""pill"",""item"":2,""verdict"":""REJECT"",""defect_type"":""unspecified anomaly"",""severity"":""MEDIUM"",""confidence_pct"":88,""area_pct"":2.2,""location"":""right"",""box"":null,""recent_rejects_last_20"":2}"
+3,RE-INSPECT,crack or scratch,LOW,2116,50,4928,17.43,1059,true,,"ACTION: Re-inspect item 8 and inspect neighbouring tablets.
+REASON: Crack or scratch defect on the upper-right side of the tablet.
+CHECK: Check punch and die wear and tablet hardness on the press.
+LOG: Item 8 re-inspected for crack or scratch defect.","{""product"":""pill"",""item"":8,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""LOW"",""confidence_pct"":55,""area_pct"":3.9,""location"":""upper-right"",""box"":null,""recent_rejects_last_20"":1}"
+4,REJECT,deformation,LOW,2031,47,4676,17.39,1060,true,,"ACTION: Reject item 4 and keep it apart from good tablets.
+REASON: Low severity deformation on the left side of the tablet.
+CHECK: Check compression force and tooling alignment on the press.
+LOG: Item 4 rejected for low severity deformation.","{""product"":""pill"",""item"":4,""verdict"":""REJECT"",""defect_type"":""deformation"",""severity"":""LOW"",""confidence_pct"":62,""area_pct"":2.3,""location"":""left"",""box"":null,""recent_rejects_last_20"":5}"
+5,RE-INSPECT,deformation,LOW,2133,54,5348,16.49,1059,true,,"ACTION: Re-inspect item 6 and check compression force and tooling alignment.
+REASON: Low severity deformation on the bottom side of the tablet.
+CHECK: Check compression force and tooling alignment on the press.
+LOG: Item 6 re-inspected and compression force and tooling alignment checked.","{""product"":""pill"",""item"":6,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""LOW"",""confidence_pct"":81,""area_pct"":0.6,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":4}"
+6,REJECT,contamination or colour fault,LOW,2122,51,5017,17.27,1060,true,,"ACTION: Reject item 6 due to contamination or colour fault.
+REASON: Low severity contamination or colour fault on the lower left.
+CHECK: Check for foreign particles, lubricant spots, and blend uniformity.
+LOG: Item 6 rejected due to contamination or colour fault.","{""product"":""pill"",""item"":6,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""LOW"",""confidence_pct"":90,""area_pct"":1.1,""location"":""lower-left"",""box"":null,""recent_rejects_last_20"":3}"
+7,RE-INSPECT,crack or scratch,MEDIUM,2112,47,4846,16.83,1060,true,,"ACTION: Re-inspect item 8 and inspect neighbouring tablets.
+REASON: Crack or scratch defect on the centre tablet.
+CHECK: Check punch and die wear and tablet hardness on the press.
+LOG: Item 8 re-inspected due to crack or scratch defect.","{""product"":""pill"",""item"":8,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":63,""area_pct"":1.2,""location"":""centre"",""box"":null,""recent_rejects_last_20"":3}"
+8,REJECT,deformation,MEDIUM,2021,47,4663,17.41,1060,true,,"ACTION: Reject item 9 and keep it separate from good tablets.
+REASON: Medium severity deformation on the bottom side of the tablet.
+CHECK: Check compression force and tooling alignment on the press.
+LOG: Item 9 rejected for medium severity deformation.","{""product"":""pill"",""item"":9,""verdict"":""REJECT"",""defect_type"":""deformation"",""severity"":""MEDIUM"",""confidence_pct"":76,""area_pct"":1,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":1}"
+9,RE-INSPECT,contamination or colour fault,LOW,2113,56,5277,17.38,1061,true,,"ACTION: Re-inspect item 3 and check for contamination or colour faults.
+REASON: Low severity contamination or colour fault on the lower-right side.
+CHECK: Check for foreign particles, lubricant spots, and blend uniformity on the press.
+LOG: Item 3 re-inspected and found no defects.","{""product"":""pill"",""item"":3,""verdict"":""RE-INSPECT"",""defect_type"":""contamination or colour fault"",""severity"":""LOW"",""confidence_pct"":83,""area_pct"":1.4,""location"":""lower-right"",""box"":null,""recent_rejects_last_20"":1}"
+10,REJECT,unspecified anomaly,HIGH,2067,50,4868,17.49,1061,true,,"ACTION: Reject item 6 due to unknown anomaly and high severity.
+REASON: High severity anomaly on the top side of the pill.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 6 rejected for unknown anomaly and high severity.","{""product"":""pill"",""item"":6,""verdict"":""REJECT"",""defect_type"":""unspecified anomaly"",""severity"":""HIGH"",""confidence_pct"":50,""area_pct"":1.4,""location"":""top"",""box"":null,""recent_rejects_last_20"":5}"
+11,RE-INSPECT,unspecified anomaly,MEDIUM,2078,53,5104,17.18,1061,true,,"ACTION: Re-inspect item 3 and mark the area with the defect.
+REASON: Unspecified anomaly on the marked area of the lower-left side.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 3 re-inspected and marked with the defect.","{""product"":""pill"",""item"":3,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""MEDIUM"",""confidence_pct"":77,""area_pct"":2.2,""location"":""lower-left"",""box"":null,""recent_rejects_last_20"":1}"
+12,REJECT,unspecified anomaly,HIGH,2088,53,5074,17.41,1062,true,,"ACTION: Reject item 7 due to unknown defect type and high severity.
+REASON: High severity anomaly with 0.5 area percentage and upper-right location.
+CHECK: Inspect marked area manually and record findings.
+LOG: Item 7 rejected for unknown defect type and high severity.","{""product"":""pill"",""item"":7,""verdict"":""REJECT"",""defect_type"":""unspecified anomaly"",""severity"":""HIGH"",""confidence_pct"":51,""area_pct"":0.5,""location"":""upper-right"",""box"":null,""recent_rejects_last_20"":3}"
+13,RE-INSPECT,deformation,LOW,2062,51,4919,17.50,1063,true,,"ACTION: Re-inspect item 6 and check compression force and tooling alignment.
+REASON: Low severity deformation on the lower-left side of the tablet.
+CHECK: Check compression force and tooling alignment on the press.
+LOG: Item 6 re-inspected for low severity deformation.","{""product"":""pill"",""item"":6,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""LOW"",""confidence_pct"":64,""area_pct"":0.8,""location"":""lower-left"",""box"":null,""recent_rejects_last_20"":5}"
+14,REJECT,deformation,HIGH,2025,47,4646,17.55,1063,true,,"ACTION: Reject item 3 and keep it apart from good tablets.
+REASON: High severity deformation on the left side of the tablet.
+CHECK: Check compression force and tooling alignment on the press.
+LOG: Item 3 rejected for high severity deformation.","{""product"":""pill"",""item"":3,""verdict"":""REJECT"",""defect_type"":""deformation"",""severity"":""HIGH"",""confidence_pct"":63,""area_pct"":3.6,""location"":""left"",""box"":null,""recent_rejects_last_20"":3}"
+15,RE-INSPECT,crack or scratch,LOW,2119,48,4831,17.33,1064,true,,"ACTION: Re-inspect item 4 and inspect neighbouring tablets.
+REASON: Crack or scratch defect on the upper-left side of the tablet.
+CHECK: Check punch and die wear, and inspect neighbouring tablets.
+LOG: Item 4 re-inspected and neighbouring tablets inspected.","{""product"":""pill"",""item"":4,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""LOW"",""confidence_pct"":63,""area_pct"":1.9,""location"":""upper-left"",""box"":null,""recent_rejects_last_20"":1}"
+16,REJECT,contamination or colour fault,MEDIUM,2092,51,4960,17.43,1064,true,,"ACTION: Reject item 7 due to contamination or colour fault.
+REASON: Medium severity due to medium area percentage and centre location.
+CHECK: Check for foreign particles, lubricant spots, and blend uniformity.
+LOG: Item 7 rejected due to contamination or colour fault.","{""product"":""pill"",""item"":7,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""MEDIUM"",""confidence_pct"":79,""area_pct"":1.2,""location"":""centre"",""box"":null,""recent_rejects_last_20"":1}"
+17,RE-INSPECT,deformation,LOW,2060,55,5149,17.48,1064,true,,"ACTION: Re-inspect item 3 and check compression force and tooling alignment.
+REASON: Low severity deformation on the lower-left side of the tablet.
+CHECK: Check compression force and tooling alignment on the press.
+LOG: Item 3 re-inspected and compression force and tooling alignment checked.","{""product"":""pill"",""item"":3,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""LOW"",""confidence_pct"":77,""area_pct"":1.5,""location"":""lower-left"",""box"":null,""recent_rejects_last_20"":2}"
+18,REJECT,unspecified anomaly,LOW,2056,47,4685,17.50,1064,true,,"ACTION: Reject item 9 and mark the area on the tablet.
+REASON: Unspecified anomaly on the top side of the tablet.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 9 rejected for unspecified anomaly.","{""product"":""pill"",""item"":9,""verdict"":""REJECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":60,""area_pct"":2,""location"":""top"",""box"":null,""recent_rejects_last_20"":4}"
+19,RE-INSPECT,deformation,LOW,2059,55,5163,17.40,1064,true,,"ACTION: Re-inspect item 4 and check compression force and tooling alignment.
+REASON: Low severity deformation on the lower-right side of the tablet.
+CHECK: Check compression force and tooling alignment on the press.
+LOG: Item 4 re-inspected and compression force and tooling alignment checked.","{""product"":""pill"",""item"":4,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""LOW"",""confidence_pct"":58,""area_pct"":1.7,""location"":""lower-right"",""box"":null,""recent_rejects_last_20"":5}"
+20,REJECT,unspecified anomaly,HIGH,2059,46,4744,16.76,1065,true,,"ACTION: Reject item 7 due to an unspecified anomaly.
+REASON: High severity for an unspecified anomaly on the centre tablet.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 7 rejected for an unspecified anomaly.","{""product"":""pill"",""item"":7,""verdict"":""REJECT"",""defect_type"":""unspecified anomaly"",""severity"":""HIGH"",""confidence_pct"":52,""area_pct"":0.1,""location"":""centre"",""box"":null,""recent_rejects_last_20"":3}"
+21,RE-INSPECT,unspecified anomaly,MEDIUM,2097,50,4915,17.39,1066,true,,"ACTION: Re-inspect item 4 and mark the area with the defect.
+REASON: Unspecified anomaly on the centre of the pill.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 4 re-inspected and marked with the defect.","{""product"":""pill"",""item"":4,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""MEDIUM"",""confidence_pct"":86,""area_pct"":0.6,""location"":""centre"",""box"":null,""recent_rejects_last_20"":5}"
+22,REJECT,unspecified anomaly,LOW,2063,53,5053,17.39,1065,true,,"ACTION: Reject item 7 due to unknown defect type and low severity.
+REASON: Unspecified anomaly on the bottom side of the tablet.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 7 rejected due to unknown defect type and low severity.","{""product"":""pill"",""item"":7,""verdict"":""REJECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":78,""area_pct"":1.5,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":4}"
+23,RE-INSPECT,crack or scratch,MEDIUM,2108,54,5158,17.38,1066,true,,"ACTION: Re-inspect item 3 and inspect neighbouring tablets.
+REASON: Medium severity crack or scratch on the upper-left side of the tablet.
+CHECK: Check punch and die wear, and tablet hardness on the press.
+LOG: Item 3 re-inspected due to medium severity crack or scratch.","{""product"":""pill"",""item"":3,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":70,""area_pct"":3.7,""location"":""upper-left"",""box"":null,""recent_rejects_last_20"":5}"
+24,REJECT,crack or scratch,HIGH,2061,50,4868,17.46,1066,true,,"ACTION: Reject item 3 due to crack or scratch defect.
+REASON: High severity crack or scratch on the bottom side of the tablet.
+CHECK: Check punch and die wear and tablet hardness on the press.
+LOG: Item 3 rejected for crack or scratch defect.","{""product"":""pill"",""item"":3,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""HIGH"",""confidence_pct"":66,""area_pct"":0.4,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":4}"
+25,RE-INSPECT,unspecified anomaly,LOW,2091,52,5016,17.44,1067,true,,"ACTION: Re-inspect item 2 and mark the area with the defect.
+REASON: Unspecified anomaly on the lower-right side of the pill.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 2 re-inspected and marked with the defect.","{""product"":""pill"",""item"":2,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":99,""area_pct"":2.6,""location"":""lower-right"",""box"":null,""recent_rejects_last_20"":1}"
+26,REJECT,crack or scratch,LOW,2063,51,4926,17.46,1067,true,,"ACTION: Reject item 3 due to crack or scratch defect.
+REASON: Low severity crack or scratch on the bottom side of the tablet.
+CHECK: Check punch and die wear and tablet hardness on the press.
+LOG: Item 3 rejected for low severity crack or scratch.","{""product"":""pill"",""item"":3,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""LOW"",""confidence_pct"":92,""area_pct"":1.8,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":4}"
+27,RE-INSPECT,contamination or colour fault,MEDIUM,2114,56,5274,17.41,1067,true,,"ACTION: Re-inspect item 1 and keep it separate from good tablets.
+REASON: Medium severity contamination or colour fault on the right side.
+CHECK: Check for foreign particles, lubricant spots, and blend uniformity on the press.
+LOG: Item 1 re-inspected for contamination or colour fault.","{""product"":""pill"",""item"":1,""verdict"":""RE-INSPECT"",""defect_type"":""contamination or colour fault"",""severity"":""MEDIUM"",""confidence_pct"":73,""area_pct"":2,""location"":""right"",""box"":null,""recent_rejects_last_20"":4}"
+28,REJECT,contamination or colour fault,MEDIUM,2094,51,4957,17.46,1067,true,,"ACTION: Reject item 1 due to contamination or colour fault.
+REASON: Medium severity defect on the left side of the tablet.
+CHECK: Check for foreign particles, lubricant spots, and blend uniformity.
+LOG: Item 1 rejected due to contamination or colour fault.","{""product"":""pill"",""item"":1,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""MEDIUM"",""confidence_pct"":91,""area_pct"":0.4,""location"":""left"",""box"":null,""recent_rejects_last_20"":5}"
+29,RE-INSPECT,crack or scratch,LOW,2109,52,5046,17.36,1068,true,,"ACTION: Re-inspect item 2 and keep it separate from good tablets.
+REASON: Crack or scratch defect on the lower-right side of the tablet.
+CHECK: Check punch and die wear, and inspect neighbouring tablets.
+LOG: Item 2 re-inspected for crack or scratch defect.","{""product"":""pill"",""item"":2,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""LOW"",""confidence_pct"":92,""area_pct"":1,""location"":""lower-right"",""box"":null,""recent_rejects_last_20"":0}"
+30,REJECT,contamination or colour fault,LOW,2090,51,4954,17.46,1068,true,,"ACTION: Reject item 8 due to contamination or colour fault.
+REASON: Low severity contamination or colour fault on the lower left side.
+CHECK: Check for foreign particles, lubricant spots, and blend uniformity.
+LOG: Item 8 rejected for contamination or colour fault.","{""product"":""pill"",""item"":8,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""LOW"",""confidence_pct"":74,""area_pct"":0.5,""location"":""lower-left"",""box"":null,""recent_rejects_last_20"":2}"
+31,RE-INSPECT,crack or scratch,MEDIUM,2113,48,4814,17.40,1068,true,,"ACTION: Re-inspect item 2 and inspect neighbouring tablets.
+REASON: Crack or scratch defect on the top side of the tablet.
+CHECK: Check punch and die wear and tablet hardness on the press.
+LOG: Item 2 re-inspected and neighbouring tablets inspected.","{""product"":""pill"",""item"":2,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":74,""area_pct"":2.2,""location"":""top"",""box"":null,""recent_rejects_last_20"":2}"
+32,REJECT,contamination or colour fault,HIGH,2089,51,4949,17.48,1069,true,,"ACTION: Reject item 1 due to contamination or colour fault.
+REASON: High severity for contamination or colour fault on the left side.
+CHECK: Check for foreign particles, lubricant spots, and blend uniformity.
+LOG: Item 1 rejected for contamination or colour fault.","{""product"":""pill"",""item"":1,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""HIGH"",""confidence_pct"":68,""area_pct"":0.2,""location"":""left"",""box"":null,""recent_rejects_last_20"":4}"
+33,RE-INSPECT,deformation,MEDIUM,2057,54,5102,17.41,1069,true,,"ACTION: Re-inspect item 7 and check compression force and tooling alignment.
+REASON: Medium severity deformation on the bottom side of the tablet.
+CHECK: Check compression force and tooling alignment on the press.
+LOG: Item 7 re-inspected and compression force and tooling alignment checked.","{""product"":""pill"",""item"":7,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""MEDIUM"",""confidence_pct"":84,""area_pct"":1.4,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":3}"
+34,REJECT,crack or scratch,MEDIUM,2090,51,4958,17.43,1070,true,,"ACTION: Reject item 3 due to crack or scratch defect.
+REASON: Medium severity crack or scratch on the right side of the tablet.
+CHECK: Check punch and die wear and tablet hardness on the press.
+LOG: Item 3 rejected for medium severity crack or scratch.","{""product"":""pill"",""item"":3,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":74,""area_pct"":2.3,""location"":""right"",""box"":null,""recent_rejects_last_20"":1}"
+35,RE-INSPECT,crack or scratch,MEDIUM,2103,48,4815,17.33,1070,true,,"ACTION: Re-inspect item 4 and inspect neighbouring tablets.
+REASON: Medium severity crack or scratch on the centre tablet.
+CHECK: Check punch and die wear, tablet hardness, and neighbouring tablets.
+LOG: Item 4 re-inspected and found to be defective.","{""product"":""pill"",""item"":4,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":95,""area_pct"":3.8,""location"":""centre"",""box"":null,""recent_rejects_last_20"":4}"
+36,REJECT,contamination or colour fault,HIGH,2095,53,5078,17.43,1070,true,,"ACTION: Reject item 3 due to contamination or colour fault.
+REASON: High severity contamination or colour fault on the top side of the tablet.
+CHECK: Check for foreign particles, lubricant spots, and blend uniformity.
+LOG: Item 3 rejected for contamination or colour fault.","{""product"":""pill"",""item"":3,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""HIGH"",""confidence_pct"":77,""area_pct"":3.9,""location"":""top"",""box"":null,""recent_rejects_last_20"":3}"
+37,RE-INSPECT,unspecified anomaly,MEDIUM,2091,51,4962,17.42,1071,true,,"ACTION: Re-inspect item 1 and mark the area with the defect.
+REASON: Unspecified anomaly on the right side of the tablet.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 1 re-inspected and marked with the defect.","{""product"":""pill"",""item"":1,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""MEDIUM"",""confidence_pct"":64,""area_pct"":2.9,""location"":""right"",""box"":null,""recent_rejects_last_20"":5}"
+38,REJECT,crack or scratch,MEDIUM,2089,51,4998,17.19,1071,true,,"ACTION: Reject item 5 due to crack or scratch defect.
+REASON: Medium severity crack or scratch on the left side of the tablet.
+CHECK: Check punch and die wear and tablet hardness on the press.
+LOG: Item 5 rejected for medium severity crack or scratch.","{""product"":""pill"",""item"":5,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":93,""area_pct"":1.4,""location"":""left"",""box"":null,""recent_rejects_last_20"":0}"
+39,RE-INSPECT,deformation,LOW,2068,54,5133,17.29,1071,true,,"ACTION: Re-inspect item 4 and check compression force and tooling alignment.
+REASON: Low severity deformation on the bottom side of the tablet.
+CHECK: Check compression force and tooling alignment on the press.
+LOG: Item 4 re-inspected and compression force and tooling alignment checked.","{""product"":""pill"",""item"":4,""verdict"":""RE-INSPECT"",""defect_type"":""deformation"",""severity"":""LOW"",""confidence_pct"":82,""area_pct"":1.7,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":3}"
+40,REJECT,crack or scratch,MEDIUM,2088,51,4963,17.39,1072,true,,"ACTION: Reject item 5 due to crack or scratch defect.
+REASON: Medium severity crack or scratch on the right side of the tablet.
+CHECK: Check punch and die wear and tablet hardness on the press.
+LOG: Item 5 rejected for medium severity crack or scratch.","{""product"":""pill"",""item"":5,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":74,""area_pct"":2.6,""location"":""right"",""box"":null,""recent_rejects_last_20"":2}"
+41,RE-INSPECT,unspecified anomaly,LOW,2095,51,5062,16.85,1072,true,,"ACTION: Re-inspect item 1 and mark the area with the defect.
+REASON: Unspecified anomaly on the left side of the pill.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 1 re-inspected and marked with the defect.","{""product"":""pill"",""item"":1,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":88,""area_pct"":2.9,""location"":""left"",""box"":null,""recent_rejects_last_20"":1}"
+42,REJECT,contamination or colour fault,LOW,2097,56,5316,17.09,1073,true,,"ACTION: Reject item 6 due to contamination or colour fault.
+REASON: Low severity contamination or colour fault on the left side of the tablet.
+CHECK: Check for foreign particles, lubricant spots, and blend uniformity on the press.
+LOG: Item 6 rejected for contamination or colour fault.","{""product"":""pill"",""item"":6,""verdict"":""REJECT"",""defect_type"":""contamination or colour fault"",""severity"":""LOW"",""confidence_pct"":73,""area_pct"":0.3,""location"":""left"",""box"":null,""recent_rejects_last_20"":1}"
+43,RE-INSPECT,unspecified anomaly,MEDIUM,2099,51,4982,17.34,1073,true,,"ACTION: Re-inspect item 7 and inspect the marked area manually.
+REASON: Unspecified anomaly in the marked area of the lower-left.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 7 re-inspected and marked area inspected manually.","{""product"":""pill"",""item"":7,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""MEDIUM"",""confidence_pct"":76,""area_pct"":2.4,""location"":""lower-left"",""box"":null,""recent_rejects_last_20"":0}"
+44,REJECT,crack or scratch,MEDIUM,2192,51,5130,17.02,1074,true,,"ACTION: Reject item 5 due to crack or scratch defect.
+REASON: Medium severity crack or scratch on the right side of the tablet.
+CHECK: Check punch and die wear and tablet hardness on the press.
+LOG: Item 5 rejected for medium severity crack or scratch.","{""product"":""pill"",""item"":5,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""MEDIUM"",""confidence_pct"":71,""area_pct"":2.4,""location"":""right"",""box"":null,""recent_rejects_last_20"":1}"
+45,RE-INSPECT,unspecified anomaly,LOW,2258,51,5199,17.00,1074,true,,"ACTION: Re-inspect item 1 and mark the area for further inspection.
+REASON: Unspecified anomaly on the right side of the tablet.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 1 re-inspected and marked for further inspection.","{""product"":""pill"",""item"":1,""verdict"":""RE-INSPECT"",""defect_type"":""unspecified anomaly"",""severity"":""LOW"",""confidence_pct"":96,""area_pct"":0.9,""location"":""right"",""box"":null,""recent_rejects_last_20"":4}"
+46,REJECT,crack or scratch,HIGH,2223,50,5099,17.04,1075,true,,"ACTION: Reject item 1 due to crack or scratch defect.
+REASON: High severity crack or scratch on the bottom side of the tablet.
+CHECK: Check punch and die wear and tablet hardness on the press.
+LOG: Item 1 rejected for crack or scratch defect.","{""product"":""pill"",""item"":1,""verdict"":""REJECT"",""defect_type"":""crack or scratch"",""severity"":""HIGH"",""confidence_pct"":62,""area_pct"":3.1,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":1}"
+47,RE-INSPECT,crack or scratch,LOW,2265,49,5146,16.66,1075,true,,"ACTION: Re-inspect item 4 and inspect neighbouring tablets.
+REASON: Crack or scratch defect on the top side of the tablet.
+CHECK: Check punch and die wear and tablet hardness on the press.
+LOG: Item 4 re-inspected due to low severity crack.","{""product"":""pill"",""item"":4,""verdict"":""RE-INSPECT"",""defect_type"":""crack or scratch"",""severity"":""LOW"",""confidence_pct"":69,""area_pct"":3.8,""location"":""top"",""box"":null,""recent_rejects_last_20"":0}"
+48,REJECT,unspecified anomaly,MEDIUM,2221,52,5269,16.73,1076,true,,"ACTION: Reject item 4 due to unknown defect type and medium severity.
+REASON: Unspecified anomaly on the bottom side of the tablet.
+CHECK: Inspect the marked area manually and record what you see.
+LOG: Item 4 rejected for unknown defect type and medium severity.","{""product"":""pill"",""item"":4,""verdict"":""REJECT"",""defect_type"":""unspecified anomaly"",""severity"":""MEDIUM"",""confidence_pct"":50,""area_pct"":1.9,""location"":""bottom"",""box"":null,""recent_rejects_last_20"":0}"
+49,RE-INSPECT,contamination or colour fault,LOW,2588,67,6495,16.89,1074,true,,"ACTION: Re-inspect item 5 and check for foreign particles, lubricant spots, and blend uniformity.
+REASON: Low severity contamination or colour fault on the upper-left side of the tablet.
+CHECK: Check for foreign particles, lubricant spots, and blend uniformity on the press.
+LOG: Item 5 re-inspected for contamination or colour fault.","{""product"":""pill"",""item"":5,""verdict"":""RE-INSPECT"",""defect_type"":""contamination or colour fault"",""severity"":""LOW"",""confidence_pct"":84,""area_pct"":3,""location"":""upper-left"",""box"":null,""recent_rejects_last_20"":5}"
+50,REJECT,deformation,HIGH,2198,48,4966,16.98,1075,true,,"ACTION: Reject item 1 and keep it apart from good tablets.
+REASON: High severity deformation on the upper-left side of the tablet.
+CHECK: Check compression force and tooling alignment on the press.
+LOG: Item 1 rejected for high severity deformation.","{""product"":""pill"",""item"":1,""verdict"":""REJECT"",""defect_type"":""deformation"",""severity"":""HIGH"",""confidence_pct"":83,""area_pct"":1.6,""location"":""upper-left"",""box"":null,""recent_rejects_last_20"":3}"

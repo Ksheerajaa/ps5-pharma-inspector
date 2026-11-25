@@ -1,0 +1,18 @@
+﻿python : W1122 19:49:22.820833 18328 torch\utils\_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is 
+now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is 
+deprecated and will be an error in a future release.
+At line:1 char:549
++ ... t=Get-Date; python -m executorch.extension.llm.export.export_llm --co ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (W1122 19:49:22....future release.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+W1122 19:49:23.072587 18328 torch\utils\_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now 
+natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is 
+deprecated and will be an error in a future release.
+W1122 19:49:26.011995 18328 torch\utils\flop_counter.py:29] triton not found; flop counting will not work for triton 
+kernels
+I tokenizers:C:\tk\src\regex.cpp:40] Registering override fallback regex
+[2026-11-22 19:49:31,093][root][INFO] - Applying quantizers: []
+[2026-11-22 19:49:31,787][root][INFO] - Checkpoint dtype: torch.bfloat16
+EXIT -1073741819  elapsed 16.9 min

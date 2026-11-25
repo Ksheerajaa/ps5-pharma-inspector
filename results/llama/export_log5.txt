@@ -1,0 +1,226 @@
+START 21:31:06.53  
+W1122 21:31:21.859747 25124 torch\utils\_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1122 21:31:22.101095 25124 torch\utils\_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1122 21:31:27.270639 25124 torch\utils\flop_counter.py:29] triton not found; flop counting will not work for triton kernels
+I tokenizers:C:\tk\src\regex.cpp:40] Registering override fallback regex
+[2026-11-22 21:31:32,749][root][INFO] - Applying quantizers: []
+[2026-11-22 21:31:33,121][root][INFO] - Checkpoint dtype: torch.bfloat16
+quantize ('tok_embeddings', Embedding(128256, 2048)) with group_size 32, bitwidth 4
+[2026-11-22 21:31:55,754][root][INFO] - Looking for libcustom_ops_aot_lib.so in C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops
+[2026-11-22 21:31:55,779][root][INFO] - Loading custom ops library: C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops_aot_lib.dll
+[2026-11-22 21:31:56,263][root][INFO] - Replacing KVCache with CustomKVCache. This modifies the model in place.
+[2026-11-22 21:31:56,818][root][INFO] - Model after source transforms: Transformer(
+  (tok_embeddings): QuantizedGroupEmbedding()
+  (layers): ModuleList(
+    (0-15): 16 x TransformerBlock(
+      (attention): AttentionMHA(
+        (wq): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wk): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wv): Linear(in_features=2048, out_features=512, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([512, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (wo): Linear(in_features=2048, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (rope): Rope(
+          (apply_rotary_emb): RotaryEmbedding()
+        )
+        (kv_cache): CustomKVCache()
+        (SDPA): SDPACustom()
+      )
+      (feed_forward): FeedForward(
+        (w1): Linear(in_features=2048, out_features=8192, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([8192, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w2): Linear(in_features=8192, out_features=2048, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([2048, 8192]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+        (w3): Linear(in_features=2048, out_features=8192, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([8192, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+      )
+      (attention_norm): RMSNorm()
+      (ffn_norm): RMSNorm()
+    )
+  )
+  (rope): Rope(
+    (apply_rotary_emb): RotaryEmbedding()
+  )
+  (norm): RMSNorm()
+  (output): Linear(in_features=2048, out_features=128256, bias=False, weight=IntxUnpackedToInt8Tensor(target_dtype=torch.int4, block_size=(1, 32), shape=torch.Size([128256, 2048]), dtype=torch.float32, device=cpu, activation_quantization=int8_asym_per_token))
+)
+[2026-11-22 21:31:56,822][root][INFO] - Exporting with:
+[2026-11-22 21:31:56,852][root][INFO] - inputs: (tensor([[2, 3, 4]]), {'input_pos': tensor([0])})
+[2026-11-22 21:31:56,852][root][INFO] - kwargs: None
+[2026-11-22 21:31:56,855][root][INFO] - dynamic shapes: ({1: Dim('token_dim', min=0, max=1023)}, {'input_pos': {0: 1}})
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\torch\_dynamo\utils.py:4019: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\torch\fx\interpreter.py:377: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  return target(*args, **kwargs)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+[2026-11-22 21:32:52,040][root][INFO] - Running canonical pass: RemoveRedundantTransposes
+[2026-11-22 21:32:52,129][root][INFO] - Lowering model using following partitioner(s): 
+[2026-11-22 21:32:52,129][root][INFO] - --> XnnpackDynamicallyQuantizedPartitioner
+[2026-11-22 21:32:52,129][root][INFO] - --> XnnpackPartitioner
+[2026-11-22 21:32:52,129][root][INFO] - Using pt2e [] to quantizing the model...
+[2026-11-22 21:32:52,129][root][INFO] - No quantizer provided, passing...
+[2026-11-22 21:32:52,131][root][INFO] - Re-exporting with:
+[2026-11-22 21:32:52,134][root][INFO] - inputs: (tensor([[2, 3, 4]]), {'input_pos': tensor([0])})
+[2026-11-22 21:32:52,134][root][INFO] - kwargs: None
+[2026-11-22 21:32:52,134][root][INFO] - dynamic shapes: ({1: Dim('token_dim', min=0, max=1023)}, {'input_pos': {0: 1}})
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+C:\Program Files\Python310\lib\copyreg.py:101: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\extension\llm\custom_ops\custom_ops.py:317: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(start_pos)
+C:\Users\kampe\AppData\Roaming\Python\Python310\site-packages\executorch\exir\emit\_emitter.py:1906: UserWarning: Mutation on a buffer in the model is detected. ExecuTorch assumes buffers that are mutated in the graph have a meaningless initial state, only the shape and dtype will be serialized, unless a pass which sets meta["et_init_buffer"] to True such as InitializedMutableBufferPass is run.
+  warnings.warn(
+[2026-11-22 21:38:18,927][root][INFO] - Required memory for activation in bytes: [0, 176316224]
+[2026-11-22 21:38:23,767][root][INFO] - Saved exported program to llama3_2_1b_instruct_8da4w_g32_emb4_1024.pte
+END 21:31:06.53  

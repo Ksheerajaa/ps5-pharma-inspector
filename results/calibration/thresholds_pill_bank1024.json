@@ -1,0 +1,43 @@
+{
+  "category": "pill",
+  "split_seed": 42,
+  "created_utc": "2026-11-22T07:35:39+00:00",
+  "checkpoint": "patchcore_pill_bank_1024.pt",
+  "bank_size": 1024,
+  "t_pass": 3.523254632949829,
+  "t_reject": 3.9978010654449463,
+  "reinspect_enabled": true,
+  "t_pix": 3.6220605286222005,
+  "pixel_f1_calib": 0.7460156678344748,
+  "sev_cuts_area_pct": [
+    0.0085296630859375,
+    0.0185699462890625
+  ],
+  "gt_mask_area_tertiles": [
+    0.007105509440104166,
+    0.014582316080729166
+  ],
+  "confidence_scale": 0.4651682376861572,
+  "sensitivity_step": 0.3050915598869324,
+  "calib_image_auroc": 0.9457013574660634,
+  "n_val_good": 26,
+  "n_calib": 81,
+  "quality_and_finder": {
+    "target_item_side_fraction": 0.8671875,
+    "target_item_area_fraction": 0.3984832763671875,
+    "background_rgb_median": [
+      15.0,
+      15.0,
+      26.0
+    ],
+    "luma_mean_range": [
+      73.26560974121094,
+      80.21383666992188
+    ],
+    "clipped_fraction_max": 0.0,
+    "laplacian_var_sharp_min": 36.0731346195098,
+    "laplacian_var_blur_sigma3_max": 1.9822845270391554,
+    "blur_threshold": 8.456193978265564,
+    "n_images": 241
+  }
+}

@@ -1,0 +1,28 @@
+# Field names verified against executorch 1.5.1 extension/llm/export/config/llm_config.py (LlmConfig).
+# Paths are relative to the repository root; run ml/scripts/export_llama.sh from there.
+base:
+  model_class: llama3_2
+  checkpoint: ml/checkpoints/llama-3.2-1b-instruct/original/consolidated.00.pth
+  params: ml/checkpoints/llama-3.2-1b-instruct/original/params.json
+  metadata: '{"get_bos_id":128000, "get_eos_ids":[128009, 128001]}'
+model:
+  use_kv_cache: true
+  use_sdpa_with_kv_cache: true
+  dtype_override: fp32
+export:
+  max_seq_length: 1024
+  max_context_length: 1024
+  output_dir: ml/checkpoints/llama_pte
+  output_name: llama3_2_1b_instruct_8da4w_g32_emb4_1024.pte
+quantization:
+  qmode: 8da4w
+  group_size: 32
+  embedding_quantize: "4,32"
+  # HQQ scale search (default true) crashed twice on the 7.2 GB build laptop (access violation in
+  # torchao round_det on the 128k-vocab output layer, see results/llama/export_log2.txt).
+  # Affine per-group min/max scales are the single-pass alternative; see docs/DECISIONS.md.
+  use_hqq: false
+backend:
+  xnnpack:
+    enabled: true
+    extended_ops: true

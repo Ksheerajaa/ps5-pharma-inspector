@@ -1,0 +1,134 @@
+{
+  "vision_latency_ms": {
+    "bank256": {
+      "file": "bench_vision_bank256_20261122_212542.csv",
+      "preprocess_ms": {
+        "median": 1.0,
+        "p95": 1.0,
+        "mean": 0.55,
+        "n": 200
+      },
+      "inference_ms": {
+        "median": 38.0,
+        "p95": 44.0,
+        "mean": 38.16,
+        "n": 200
+      },
+      "postprocess_ms": {
+        "median": 42.0,
+        "p95": 45.0,
+        "mean": 41.98,
+        "n": 200
+      },
+      "total_ms": {
+        "median": 80.0,
+        "p95": 87.0,
+        "mean": 80.69,
+        "n": 200
+      }
+    },
+    "bank1024": {
+      "file": "bench_vision_bank1024_20261122_212600.csv",
+      "preprocess_ms": {
+        "median": 1.0,
+        "p95": 1.0,
+        "mean": 0.51,
+        "n": 200
+      },
+      "inference_ms": {
+        "median": 39.0,
+        "p95": 43.0,
+        "mean": 39.97,
+        "n": 200
+      },
+      "postprocess_ms": {
+        "median": 39.0,
+        "p95": 42.0,
+        "mean": 39.25,
+        "n": 200
+      },
+      "total_ms": {
+        "median": 78.0,
+        "p95": 84.0,
+        "mean": 79.72,
+        "n": 200
+      }
+    },
+    "bank4096": {
+      "file": "bench_vision_bank4096_20261122_212618.csv",
+      "preprocess_ms": {
+        "median": 1.0,
+        "p95": 1.0,
+        "mean": 0.55,
+        "n": 200
+      },
+      "inference_ms": {
+        "median": 51.0,
+        "p95": 59.0,
+        "mean": 53.2,
+        "n": 200
+      },
+      "postprocess_ms": {
+        "median": 39.0,
+        "p95": 44.0,
+        "mean": 39.89,
+        "n": 200
+      },
+      "total_ms": {
+        "median": 92.0,
+        "p95": 103.0,
+        "mean": 93.64,
+        "n": 200
+      }
+    }
+  },
+  "device": "device=Nothing A059; android=17 (API 37); ram_mb=7428; battery_pct=100; battery_temp_c=40.0; thermal_status=1; airplane=false; ts=20261122_212618; threads=4; runtime=onnxruntime-android 1.23.2 CPU",
+  "fps_full_pipeline": {
+    "file": "bench_fps_bank4096_20261122_212749.csv",
+    "frames": 569,
+    "inspected_items": 569,
+    "seconds": 60.083,
+    "frames_per_s": 9.47,
+    "items_per_min": 568.2,
+    "note": "replay frames (first 20 non-golden replay images), single-item frames; camera not involved"
+  },
+  "golden_parity": {
+    "file": "golden_device_bank4096_20261122_212647.csv",
+    "n": 5,
+    "rel_diff_median": 0.0142,
+    "rel_diff_max": 0.0339,
+    "pairs": [
+      {
+        "file": "color/000.png",
+        "score_torch": 2.634661912918091,
+        "score_device": 2.6139057,
+        "rel_diff": 0.0079
+      },
+      {
+        "file": "color/002.png",
+        "score_torch": 3.558464527130127,
+        "score_device": 3.4377632,
+        "rel_diff": 0.0339
+      },
+      {
+        "file": "color/004.png",
+        "score_torch": 6.288626670837402,
+        "score_device": 6.229628,
+        "rel_diff": 0.0094
+      },
+      {
+        "file": "color/005.png",
+        "score_torch": 2.9052703380584717,
+        "score_device": 2.9633703,
+        "rel_diff": 0.02
+      },
+      {
+        "file": "color/009.png",
+        "score_torch": 3.312830686569214,
+        "score_device": 3.3599074,
+        "rel_diff": 0.0142
+      }
+    ],
+    "note": "difference includes resize (OpenCV INTER_AREA on device vs PIL bilinear-antialias in PyTorch) and fp32 runtime differences"
+  }
+}

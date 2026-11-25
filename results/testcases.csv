@@ -1,0 +1,21 @@
+case_id,scenario,input (synthetic),expected,observed,result
+F1,Empty tray,testcases/F1_empty/frame.png,NO_ITEMS,NO_ITEMS (place items),PASS
+F2,Blurred frame,testcases/F2_blur/frame.png,BAD_IMAGE (blur),BAD_IMAGE (blur),PASS
+F3a,Too dark,testcases/F3_exposure/dark.png,BAD_IMAGE (dark),BAD_IMAGE (dark),PASS
+F3b,Too bright,testcases/F3_exposure/bright.png,BAD_IMAGE (bright),BAD_IMAGE (bright),PASS
+F4,Glare patch,testcases/F4_glare/frame.png,BAD_IMAGE (glare),BAD_IMAGE (glare),PASS
+I1,One good item,testcases/I1_good/frame.png,"1 item, OK, PASS",#1 OK PASS,PASS
+I2,One defective item,testcases/I2_defect/frame.png,"1 item, RE-INSPECT or REJECT",#1 OK REJECT,PASS
+I3,Mixed tray 2x2,testcases/I3_trays/tray2x2.png,4 items inspected; verdicts compared with single-image runs,#1 OK REJECT; #2 OK PASS; #3 OK REJECT; #4 OK REJECT | agreement with single-image eval verdicts 4/4,PASS
+I3,Mixed tray 3x3,testcases/I3_trays/tray3x3.png,9 items inspected; verdicts compared with single-image runs,#1 OK REJECT; #2 OK PASS; #3 OK RE-INSPECT; #4 OK RE-INSPECT; #5 OK REJECT; #6 OK RE-INSPECT; #7 OK REJECT; #8 OK REJECT; #9 OK REJECT | agreement with single-image eval verdicts 8/9,PASS
+I4,Touching items,testcases/I4_touching/frame.png,"CLUSTER, not inspected",#1 CLUSTER,PASS
+I5,Item cut by frame edge,testcases/I5_partial/frame.png,PARTIAL for the cut item; other item inspected,#1 OK PASS; #2 PARTIAL,PASS
+I6,Foreign objects,testcases/I6_foreign/frame.png,"UNKNOWN_OBJECT for both objects, never PASS",#1 OK PASS; #2 UNKNOWN_OBJECT; #3 UNKNOWN_OBJECT,PASS
+I6b,Dark foreign object on dark fixture (known limitation),testcases/I6b_dark_foreign/frame.png,UNKNOWN_OBJECT,#1 OK PASS,FAIL
+I7,More than 12 items,testcases/I7_too_many/frame.png,"12 inspected, 4 TOO_MANY",#1 OK PASS; #2 OK PASS; #3 OK PASS; #4 OK PASS; #5 OK PASS; #6 OK PASS; #7 OK PASS; #8 OK PASS; #9 OK PASS; #10 OK PASS;...,PASS
+I8,Wrong product (capsule),testcases/I8_wrong_product/frame.png,UNKNOWN_OBJECT,#1 CLUSTER,FAIL
+I9,Mixed tray with cluster,testcases/I9_mixed_cluster/frame.png,3 inspected + 1 CLUSTER needing attention,#1 OK PASS; #2 OK PASS; #3 OK PASS; #4 CLUSTER,PASS
+I10.0,Near-threshold calib defect,testcases/I10_near_threshold/band_0.png,RE-INSPECT (calib score in band),#1 OK RE-INSPECT score 3.0923638,PASS
+I10.1,Near-threshold calib defect,testcases/I10_near_threshold/band_1.png,RE-INSPECT (calib score in band),#1 OK REJECT score 3.6350985,FAIL
+I10.2,Near-threshold calib defect,testcases/I10_near_threshold/band_2.png,RE-INSPECT (calib score in band),#1 OK RE-INSPECT score 3.1241007,PASS
+I10.3,Near-threshold calib defect,testcases/I10_near_threshold/band_3.png,RE-INSPECT (calib score in band),#1 OK RE-INSPECT score 3.2004256,PASS

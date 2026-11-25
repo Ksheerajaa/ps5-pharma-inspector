@@ -1,0 +1,75 @@
+{
+  "v1_prompt_seed2026": {
+    "file": "advisory_test_20261122_223034.csv",
+    "header": "device=Nothing A059; android=17 (API 37); ram_mb=7428; battery_pct=100; battery_temp_c=36.0; thermal_status=1; airplane=false; ts=20261122_223036; llm=llama3.2-1b-instruct 8da4w xnnpack; et=1.5.1; load_ms=2275; pss_before_mb=323; pss_loaded_mb=1152",
+    "n": 50,
+    "format_valid": 26,
+    "ttft_ms": {
+      "median": 1050.5,
+      "p95": 1116.0,
+      "max": 1265.0
+    },
+    "tokens": {
+      "median": 69.0,
+      "p95": 196.0,
+      "max": 590.0
+    },
+    "total_ms": {
+      "median": 5001.0,
+      "p95": 12004.0,
+      "max": 37712.0
+    },
+    "decode_tok_s": {
+      "median": 17.855,
+      "p95": 18.04,
+      "max": 18.12
+    },
+    "pss_mb": {
+      "median": 1055.0,
+      "p95": 1058.0,
+      "max": 1195.0
+    },
+    "note": "diagnostic run; failures: repeated block, wrong ACTION verb, >20 words, invented numbers"
+  },
+  "v2_prompt_seed2027": {
+    "file": "advisory_test_20261123_121400.csv",
+    "header": "device=Nothing A059; android=17 (API 37); ram_mb=7428; battery_pct=81; battery_temp_c=37.0; thermal_status=1; airplane=false; ts=20261123_121403; llm=llama3.2-1b-instruct 8da4w xnnpack; et=1.5.1; prompt=v2; seed=2027; load_ms=2404; pss_before_mb=329; pss_loaded_mb=1167",
+    "n": 50,
+    "format_valid": 50,
+    "ttft_ms": {
+      "median": 2093.0,
+      "p95": 2258.0,
+      "max": 2588.0
+    },
+    "tokens": {
+      "median": 51.0,
+      "p95": 56.0,
+      "max": 67.0
+    },
+    "total_ms": {
+      "median": 4990.0,
+      "p95": 5316.0,
+      "max": 6495.0
+    },
+    "decode_tok_s": {
+      "median": 17.39,
+      "p95": 17.49,
+      "max": 17.55
+    },
+    "pss_mb": {
+      "median": 1067.0,
+      "p95": 1075.0,
+      "max": 1076.0
+    },
+    "manual_review": {
+      "factually_consistent": 47,
+      "invented_reinspection_outcome": [
+        1,
+        9,
+        35
+      ],
+      "note": "LOG lines sometimes use past tense ('re-inspected and checked') for an instruction; counted as consistent"
+    },
+    "post_hoc_rule": "RE-INSPECT answers claiming an outcome are rejected (template fallback); added after this review, catches exactly cases 1, 9, 35 of this run; not re-measured on a fresh seed"
+  }
+}
