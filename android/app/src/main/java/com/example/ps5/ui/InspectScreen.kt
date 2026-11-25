@@ -139,7 +139,7 @@ fun InspectScreen(engine: AppEngine, modifier: Modifier) {
 
     Column(modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(
-            "Offline · Pill · bank ${engine.bankSize} · ref: ${engine.reference?.id ?: "none"} · " +
+            "Offline · ${engine.productLabel()} · bank ${engine.bankSize} · ref: ${engine.reference?.id ?: "none"} · " +
                 if (engine.llama.filesPresent()) "Llama ready" else "advisory model unavailable (template advice)",
             style = MaterialTheme.typography.bodySmall,
         )

@@ -7,6 +7,7 @@ import com.example.ps5.core.AnomalyFeatures
 import com.example.ps5.core.CalibratedConfig
 import com.example.ps5.core.DecisionCore
 import com.example.ps5.core.DefectTyper
+import com.example.ps5.core.FrameGate
 import com.example.ps5.core.InspectionDecision
 import com.example.ps5.vision.Blob
 import com.example.ps5.vision.BlobStatus
@@ -68,15 +69,21 @@ class InspectionPipeline(
             Imgproc.resize(rgb, small, Size(rgb.cols() * s, rgb.rows() * s), 0.0, 0.0, Imgproc.INTER_AREA)
             Imgproc.cvtColor(small, small, Imgproc.COLOR_RGB2GRAY)
             val stats = QualityGate.stats(small)
-            small.release()
-            // Bright and glare are judged on the whole frame. "Dark" is judged only when items are present:
-            // an empty tray on the dark fixture is legitimately dark (it becomes NO_ITEMS).
+            // Bright is judged on the whole frame. "Dark" is judged only when items are present: an empty tray on
+            // the dark fixture is legitimately dark (it becomes NO_ITEMS). Glare is judged only OUTSIDE recognised
+            // items: on a real phone camera a white tablet's own surface saturates, which is not glare.
             val issue = QualityGate.check(stats)
-            if (issue != null && issue != FrameIssue.DARK) {
+            if (issue != null && issue != FrameIssue.DARK && issue != FrameIssue.GLARE) {
+                small.release()
                 return FrameResult(frameId, FrameStatus.BAD_IMAGE, issue.reason, stats, emptyList(), SystemClock.elapsedRealtime() - t0, rgb.cols(), rgb.rows())
             }
             // 2. Item finder.
             val blobs = ItemFinder.find(rgb, reference)
+            val glare = issue == FrameIssue.GLARE && saturatedOutsideItems(small, s, blobs) > FrameGate.GLARE_SATURATED_FRACTION
+            small.release()
+            if (glare) {
+                return FrameResult(frameId, FrameStatus.BAD_IMAGE, FrameIssue.GLARE.reason, stats, emptyList(), SystemClock.elapsedRealtime() - t0, rgb.cols(), rgb.rows())
+            }
             if (blobs.isEmpty()) {
                 return FrameResult(frameId, FrameStatus.NO_ITEMS, "place items", stats, emptyList(), SystemClock.elapsedRealtime() - t0, rgb.cols(), rgb.rows())
             }
@@ -113,6 +120,22 @@ class InspectionPipeline(
         } finally {
             rgb.release()
         }
+    }
+
+    /** Fraction of saturated pixels in the gate image after masking out items that match the reference (OK blobs). */
+    private fun saturatedOutsideItems(gray: Mat, scale: Double, blobs: List<Blob>): Double {
+        val sat = Mat()
+        Imgproc.threshold(gray, sat, FrameGate.SATURATED_LUMA - 1, 255.0, Imgproc.THRESH_BINARY)
+        for (b in blobs) {
+            if (b.status != BlobStatus.OK) continue
+            val r = b.box
+            val pad = 0.1 * maxOf(r.width, r.height)
+            Imgproc.rectangle(sat, org.opencv.core.Point((r.x - pad) * scale, (r.y - pad) * scale),
+                org.opencv.core.Point((r.x + r.width + pad) * scale, (r.y + r.height + pad) * scale), org.opencv.core.Scalar(0.0), -1)
+        }
+        val f = org.opencv.core.Core.countNonZero(sat).toDouble() / (gray.rows() * gray.cols())
+        sat.release()
+        return f
     }
 
     /** Vision + decision on one 256x256 RGB crop. Public for the golden-image and latency benchmarks. */

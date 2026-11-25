@@ -58,7 +58,7 @@ private fun App() {
     LaunchedEffect(demoRun) { if (demoRun > 0) DemoScript.run({ tab = it }, { demoFile = it }) }
     val tabs = listOf("Inspect", "Replay", "History", "Bench", "About")
     Column(Modifier.fillMaxSize()) {
-        AppHeader("Pill", engine.llama.filesPresent(), engine.bankSize, onLongPress = { demoFile = null; demoRun++ })
+        AppHeader(engine.productLabel(), engine.llama.filesPresent(), engine.bankSize, onLongPress = { demoFile = null; demoRun++ })
         PrimaryScrollableTabRow(
             selectedTabIndex = tab, edgePadding = 4.dp,
             containerColor = MaterialTheme.colorScheme.surface, contentColor = MaterialTheme.colorScheme.primary,

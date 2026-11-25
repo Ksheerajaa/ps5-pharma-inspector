@@ -102,6 +102,14 @@ fun BenchScreen(engine: AppEngine, modifier: Modifier) {
 
     Column(modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text("Bank in use: ${engine.bankSize}. Results in ${engine.resultsDir.path}", style = MaterialTheme.typography.bodySmall)
+        Text("Product", style = MaterialTheme.typography.labelSmall)
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            engine.products().forEach { p ->
+                val sel = p == engine.product
+                if (sel) Button(onClick = {}) { Text(p.replaceFirstChar { it.uppercase() }) }
+                else OutlinedButton(enabled = !running, onClick = { job("product") { withContext(engine.visionDispatcher) { engine.selectProduct(p) }; say("Product: $p ${engine.visionError ?: ""}") } }) { Text(p.replaceFirstChar { it.uppercase() }) }
+            }
+        }
         FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             AppEngine.BANKS.forEach { b ->
                 OutlinedButton(enabled = !running, onClick = { job("load") { withContext(engine.visionDispatcher) { engine.loadVision(b) }; say("Loaded bank $b ${engine.visionError ?: ""}") } }) { Text("Use $b") }

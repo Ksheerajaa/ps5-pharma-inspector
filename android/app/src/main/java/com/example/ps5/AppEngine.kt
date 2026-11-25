@@ -1,5 +1,7 @@
 package com.example.ps5
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.SystemClock
@@ -68,6 +70,23 @@ class AppEngine private constructor(private val context: Context) {
 
     var bankSize: Int = prefs.getInt("bank", DEFAULT_BANK)
         private set
+    /** Products taught after the pill model live in <external files>/products/<name>/{model.onnx,config.json}. */
+    val productsDir: File = File(context.getExternalFilesDir(null), "products").apply { mkdirs() }
+    var product by androidx.compose.runtime.mutableStateOf(prefs.getString("product", "pill") ?: "pill")
+        private set
+
+    fun products(): List<String> = listOf("pill") + (productsDir.listFiles()?.filter {
+        File(it, "model.onnx").isFile && File(it, "config.json").isFile
+    }?.map { it.name }?.sorted() ?: emptyList())
+
+    fun productLabel(): String = product.replaceFirstChar { it.uppercase() }
+
+    fun selectProduct(name: String) {
+        product = name
+        prefs.edit().putString("product", name).apply()
+        loadVision(bankSize)
+        clearReference()
+    }
     lateinit var config: CalibratedConfig
         private set
     lateinit var pipeline: InspectionPipeline
@@ -92,9 +111,12 @@ class AppEngine private constructor(private val context: Context) {
     fun loadVision(bank: Int) {
         runCatching {
             model?.close()
-            val json = context.assets.open("config/thresholds_pill_bank$bank.json").bufferedReader().readText()
+            val dir = File(productsDir, product)
+            val custom = product != "pill" && File(dir, "model.onnx").isFile
+            val json = if (custom) File(dir, "config.json").readText()
+                else context.assets.open("config/thresholds_pill_bank$bank.json").bufferedReader().readText()
             config = CalibratedConfig.parse(json)
-            val bytes = context.assets.open("vision/patchcore_pill_$bank.onnx").readBytes()
+            val bytes = if (custom) File(dir, "model.onnx").readBytes() else context.assets.open("vision/patchcore_pill_$bank.onnx").readBytes()
             model = VisionModel(bytes)
             pipeline = InspectionPipeline(model!!, config)
             bankSize = bank
@@ -108,7 +130,7 @@ class AppEngine private constructor(private val context: Context) {
     }
 
     fun modelVersions(): String =
-        "vision=patchcore_pill_$bankSize.onnx;ort=1.23.2;thresholds=${config.createdUtc};llm=${if (llama.filesPresent()) "llama3.2-1b-instruct.pte" else "missing"};et=1.5.1"
+        "vision=${if (product == "pill") "patchcore_pill_$bankSize.onnx" else "products/$product/model.onnx"};ort=1.23.2;thresholds=${config.createdUtc};llm=${if (llama.filesPresent()) "llama3.2-1b-instruct.pte" else "missing"};et=1.5.1"
 
     // ---- reference item -------------------------------------------------------------------------
     fun defaultReference() = ItemFinder.mvtecDefault(config.targetItemAreaFraction.toDouble())
@@ -154,7 +176,7 @@ class AppEngine private constructor(private val context: Context) {
         if (r.status != FrameStatus.OK) {
             return listOf(
                 InspectionEntity(
-                    tsUtc = ts, sessionId = sessionId, source = source, product = "pill", frameId = r.frameId,
+                    tsUtc = ts, sessionId = sessionId, source = source, product = product, frameId = r.frameId,
                     itemIdx = null, nItemsInFrame = 0, status = r.status.name, statusReason = r.reason,
                     referenceId = reference?.id, score = null, thresholdPass = config.thresholds.passScore,
                     thresholdReject = config.thresholds.rejectScore, verdict = null, severity = null,
@@ -168,7 +190,7 @@ class AppEngine private constructor(private val context: Context) {
             val d = item.decision
             val record = d?.let { record(item) }
             InspectionEntity(
-                tsUtc = ts, sessionId = sessionId, source = source, product = "pill", frameId = r.frameId,
+                tsUtc = ts, sessionId = sessionId, source = source, product = product, frameId = r.frameId,
                 itemIdx = item.idx, nItemsInFrame = r.items.size, status = item.blob.status.name,
                 statusReason = item.blob.reason, referenceId = reference?.id, score = item.score,
                 thresholdPass = config.thresholds.passScore, thresholdReject = config.thresholds.rejectScore,
@@ -186,7 +208,7 @@ class AppEngine private constructor(private val context: Context) {
     private fun record(item: ItemResult, recentRejects: Int = 0): AdvisoryRecord {
         val d = item.decision!!
         return AdvisoryRecord(
-            product = "pill", itemNo = item.idx, verdict = d.verdict.label, defectType = item.defectType ?: "none",
+            product = product, itemNo = item.idx, verdict = d.verdict.label, defectType = item.defectType ?: "none",
             severity = d.severity?.name ?: "NONE", confidencePct = (d.confidence * 100).toInt(),
             areaPct = (item.features?.areaFraction ?: 0f) * 100.0, location = item.features?.location ?: "none",
             box = item.features?.box, recentRejectsLast20 = recentRejects,
